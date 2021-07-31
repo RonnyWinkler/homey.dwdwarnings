@@ -1,0 +1,255 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "de.ronnywinkler.homey.dwdwarnings",
+  "version": "0.0.1",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "DWD weather warnings",
+    "de": "DWD Wetterwarnungen"
+  },
+  "description": {
+    "en": "Lass dich vor Unwettern und anderen Wetterereignissen warnen!",
+    "de": "Get warned of storms and other weather events!"
+  },
+  "category": [
+    "appliances"
+  ],
+  "brandColor": "#2D4B9B",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png"
+  },
+  "author": {
+    "name": "Ronny Winkler",
+    "email": "ronny.winkler@web.de"
+  },
+  "source": "https://github.com/RonnyWinkler/homey.dwdwarnings",
+  "permissions": [],
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "winklerronny"
+      }
+    }
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "measure_number_of_warnings_changed",
+        "title": {
+          "en": "The number of warnings has changed",
+          "de": "Die Anzahl der Warnungen hat sich geändert"
+        },
+        "hint": {
+          "en": "The number of warnings has changed.",
+          "de": "Die Anzahl der Warnungen hat sich geändert."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ]
+      },
+      {
+        "id": "measure_highest_level_changed",
+        "title": {
+          "en": "The highest warning level has changed ",
+          "de": "Die höchste Warnstufe hat sich geändert"
+        },
+        "hint": {
+          "en": "The highest warning level has changed .",
+          "de": "Die höchste Warnstufe hat sich geändert."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ]
+      },
+      {
+        "id": "measure_type_changed",
+        "title": {
+          "en": "The warning type has changed ",
+          "de": "Der Warn-Typ hat sich geändert"
+        },
+        "hint": {
+          "en": "The warning type has changed .",
+          "de": "Der Warn-Typ hat sich geändert."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ]
+      },
+      {
+        "id": "measure_warnings_changed",
+        "title": {
+          "en": "The warnings have changed ",
+          "de": "Die Warnungen haben sich geändert"
+        },
+        "hint": {
+          "en": "The warning have changed .",
+          "de": "Die Warnungen haben sich geändert."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "has_warnings",
+        "title": {
+          "en": "Warnings !{{are|aren't}} present",
+          "de": "Warnungen !{{sind|sind nicht}} vorhanden"
+        },
+        "hint": {
+          "en": "This Flow will continue if warnings are/are not currently present.",
+          "de": "Dieser Flow wird fortgeführt, wenn Warnungen derzeit vorhanden/nicht vorhanden sind."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "warndistrict",
+      "name": {
+        "en": "warn district",
+        "de": "Warn-Landkreis"
+      },
+      "class": "other",
+      "capabilities": [
+        "measure_number_of_warnings",
+        "measure_highest_level",
+        "measure_type",
+        "measure_warnings",
+        "last_warnings"
+      ],
+      "defaultCapabilities": [
+        "measure_number_of_warnings"
+      ],
+      "capabilitiesOptions": {
+        "measure_number_of_warnings": {
+          "units": ""
+        },
+        "measure_highest_level": {
+          "units": ""
+        },
+        "measure_type": {
+          "units": ""
+        },
+        "measure_warnings": {
+          "units": ""
+        }
+      },
+      "pair": [
+        {
+          "id": "warncellid",
+          "navigation": {
+            "next": "list_my_devices"
+          }
+        },
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices",
+            "prev": "warncellid"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "images": {
+        "small": "/drivers/warndistrict/assets/images/small.jpg",
+        "large": "/drivers/warndistrict/assets/images/large.jpg"
+      }
+    }
+  ],
+  "capabilities": {
+    "last_warnings": {
+      "type": "string",
+      "title": {
+        "en": "Type",
+        "de": "Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "measure_highest_level": {
+      "type": "number",
+      "title": {
+        "en": "Highest warning level",
+        "de": "Höchstes Warn-Level"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "measure_number_of_warnings": {
+      "type": "number",
+      "title": {
+        "en": "Number of warnings",
+        "de": "Anzahl der Warnungen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "measure_type": {
+      "type": "string",
+      "title": {
+        "en": "Type",
+        "de": "Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "measure_warnings": {
+      "type": "string",
+      "title": {
+        "en": "Warnings",
+        "de": "Warnungen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    }
+  }
+}

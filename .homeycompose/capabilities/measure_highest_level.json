@@ -1,0 +1,12 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Highest warning level",
+        "de": "Höchstes Warn-Level"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "insights": true,
+    "icon": "/assets/measure_number_of_warnings.svg"
+}

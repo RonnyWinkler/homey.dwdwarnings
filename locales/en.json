@@ -1,0 +1,25 @@
+{
+    "settings": {
+        "settings": "Settings",
+        "subtitle": "Application settings",
+        "updateInterval": "Update interval (min)",
+        "updateIntervalDescr": "DWD updates the data if necessary, otherwise every 15 minutes.",
+        "active": "Activate data retrieval",
+        "saveChanges": "Save changes",
+        "saved": "The settings have been saved"
+    },
+    "pair": {
+        "title_warncellname": "Name of the city or the district",
+        "subtitle_warncellname1": "Please enter the name of the city or the district.",
+        "subtitle_warncellname2": "Please enter at least 3 characters.",
+        "label_warncellname": "Name:",
+        "label_found": "Found entries:"
+    },
+    "warning": {
+        "warningFor": "Warning for",
+        "warnLevel": "warning level",
+        "warnPeriod": "period",
+        "warnPeriodTo": "to",
+        "cancelled": "Warning cancelled for"
+    }
+}

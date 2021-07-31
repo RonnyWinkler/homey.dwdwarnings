@@ -1,0 +1,35 @@
+{
+  "id": "de.ronnywinkler.homey.dwdwarnings",
+  "version": "0.0.1",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "DWD weather warnings",
+    "de": "DWD Wetterwarnungen"
+  },
+  "description": {
+    "en": "Lass dich vor Unwettern und anderen Wetterereignissen warnen!",
+    "de": "Get warned of storms and other weather events!"
+  },
+  "category": [
+    "appliances"
+  ],
+  "brandColor":"#2D4B9B",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png"
+  },
+  "author": {
+    "name": "Ronny Winkler",
+    "email": "ronny.winkler@web.de"
+  },
+  "source": "https://github.com/RonnyWinkler/homey.dwdwarnings",
+  "permissions": [],
+  "contributing": {
+      "donate": {
+          "paypal": {
+              "username": "winklerronny"
+          }
+      }
+  }
+}

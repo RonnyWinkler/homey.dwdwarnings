@@ -1,0 +1,25 @@
+{
+    "settings": {
+        "settings": "Einstellungen",
+        "subtitle": "Anwendungs-Einstellungen",
+        "updateInterval": "Update-Intervall (min)",
+        "updateIntervalDescr": "DWD aktualisiert die Daten bei Bedarf, sonst alle 15 min.",
+        "active": "Aktiviere Datenermittlung",
+        "saveChanges": "Einstellungen speichern",
+        "saved": "Die Einstellungen wurden gespeichert"
+    },
+    "pair": {
+        "title_warncellname": "Name der Stadt oder des Landkreises",
+        "subtitle_warncellname1": "Bitte geben Sie denn Name der Stadt oder des Landkreises an.",
+        "subtitle_warncellname2": "Bitte mindestens 3 Zeichen eingeben.",
+        "label_warncellname": "Name:",
+        "label_found": "Gefundene Einträge:"
+    },
+    "warning": {
+        "warningFor": "Warnung für",
+        "warnLevel": "Warnstufe",
+        "warnPeriod": "Zeitraum",
+        "warnPeriodTo": "bis",
+        "cancelled": "Warnung aufgehoben für"
+    }
+}

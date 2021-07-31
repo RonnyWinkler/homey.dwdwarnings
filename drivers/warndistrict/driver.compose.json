@@ -1,0 +1,57 @@
+{
+  "id": "warndistrict",
+  "name": {
+    "en": "warn district",
+    "de": "Warn-Landkreis"
+  },
+  "class": "other",
+  "capabilities": [
+    "measure_number_of_warnings",
+    "measure_highest_level",
+    "measure_type",
+    "measure_warnings",
+    "last_warnings"
+  ],
+  "defaultCapabilities": [
+    "measure_number_of_warnings"
+  ],
+  "capabilitiesOptions": {
+    "measure_number_of_warnings": {
+      "units": ""
+    },
+    "measure_highest_level": {
+      "units": ""
+    },
+    "measure_type": {
+      "units": ""
+    },
+    "measure_warnings": {
+      "units": ""
+    }
+  },
+  "pair": [
+    {
+      "id": "warncellid",
+      "navigation": {
+        "next": "list_my_devices"
+      }
+    },
+    {
+      "id": "list_my_devices",
+      "template": "list_devices",
+      "navigation": {
+          "next": "add_my_devices",
+          "prev": "warncellid"
+      },
+      "options": { "singular": true }
+    },
+    {
+        "id": "add_my_devices",
+        "template": "add_devices"
+    }
+  ],
+  "images": {
+    "small": "/drivers/warndistrict/assets/images/small.jpg",
+    "large": "/drivers/warndistrict/assets/images/large.jpg"
+  }
+}

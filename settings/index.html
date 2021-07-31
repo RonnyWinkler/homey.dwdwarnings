@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="lwsa.css">
+
+    <!-- The '/homey.js' script must be included in your settings view to work -->
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+</head>
+
+<body>
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="setPage(event, 'settings')" id="defaultOpen"><span data-i18n="settings.settings"></span></button>
+    </div>
+
+    <!-- SETTINGS PAGE -->
+    <div id="settings" class="tabcontent">
+
+        <p data-i18n="settings.subtitle"></p>
+
+        <fieldset>
+            <fieldset>
+                <div class="field row">
+                    <label for="updateInterval"><span data-i18n="settings.updateInterval"></span></label>
+                    <input id="updateInterval" type="number" value="" />
+                    <br>
+                    <label for="updateIntervalDescr"><span data-i18n="settings.updateIntervalDescr"></span></label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="field row">
+                    <input id="active" type="checkbox"  />
+                    <label for="active"><span data-i18n="settings.active"></span></label>
+                    <br>
+                </div>
+            </fieldset>
+        </fieldset>
+        <fieldset>
+            <p><button id="save" class="right"><span data-i18n="settings.saveChanges"></span></button></p>
+        </fieldset>
+    </div>
+
+    <script type="text/javascript">
+        var updateIntervalElement = document.getElementById('updateInterval');
+        var activeElement = document.getElementById('active');
+        var saveElement = document.getElementById('save');
+
+        // a method named 'onHomeyReady' must be present in your code
+        function onHomeyReady(Homey)
+        {
+            document.getElementById("defaultOpen").click();
+
+            Homey.on('settings.set', function()
+            {
+                Homey.get('settings', function(err, settings)
+                {
+                    if (err) return Homey.alert(err);
+                    updateIntervalElement.value = settings.updateInterval;
+                    activeElement.checked = settings.active;
+                });
+            });
+
+            Homey.get('settings', function(err, settings)
+            {
+                if (err) return Homey.alert(err);
+                if (settings){
+                    updateIntervalElement.value = settings.updateInterval;
+                    activeElement.checked = settings.active;
+                }
+            });
+
+            saveElement.addEventListener('click', function(e)
+            {
+                let settings = {};
+                settings = {
+                    "updateInterval": updateIntervalElement.value,
+                    "active": activeElement.checked
+                }
+                Homey.set('settings', settings, function(err)
+                {
+                    if (err) return Homey.alert(err);
+                });
+
+                return Homey.alert(Homey.__('settings.saved'));
+            });
+
+            // Tell Homey we're ready to be displayed
+            Homey.ready();
+        }
+
+        function setPage(evt, tabPage)
+        {
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++)
+            {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++)
+            {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabPage).style.display = "block";
+            evt.currentTarget.className += " active";
+
+        }
+    </script>
+
+</body>
+
+</html>
