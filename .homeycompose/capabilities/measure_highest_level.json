@@ -2,7 +2,7 @@
     "type": "number",
     "title": {
         "en": "Highest warning level",
-        "de": "Höchstes Warn-Level"
+        "de": "Höchste Warnstufe"
     },
     "getable": true,
     "setable": false,

@@ -1,4 +1,4 @@
-Be warned of storms and weather events in your city or your district with the reports of the German Weather Service. 
+Receive warnings from the German Weather Service about storms and weather events in your city or district.
 
 The weather warnings from the German Weather Service DWD are read periodically. The messages about warning areas defined in Homey are evaluated.
 The periodic retrieval can be activated/deactivated in the app settings and the retrieval interval can be changed (by default every 15 minutes). 

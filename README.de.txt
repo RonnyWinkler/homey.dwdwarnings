@@ -1,4 +1,4 @@
-Lass dich vor Unwettern und Wetterereignissen in deiner Stadt oder deinem Landkreis warnen mit den Meldungen des Deutschen Wetterdienstes.
+Erhalte Warnungen des Deutschen Wetterdienstes vor Unwettern und Wetterereignissen in deiner Stadt oder deinem Landkreis.
 
 Je Warngebiet (Stadt oder Landkreis) kann ein Homey-Gerät angelegt werden. Das Gebiet kann über den Name gesucht/gewählt werden.
 

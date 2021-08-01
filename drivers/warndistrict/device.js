@@ -10,11 +10,11 @@ class warndistrictDevice extends Device {
         this.log('Warndistrict has been initialized');
 
         // TEST: Clear capability to interpret current warnings as new
-        await this.removeCapability('last_warnings');
-        if (!this.hasCapability('last_warnings'))
-        {
-            await this.addCapability('last_warnings');
-        }
+        // await this.removeCapability('last_warnings');
+        // if (!this.hasCapability('last_warnings'))
+        // {
+        //     await this.addCapability('last_warnings');
+        // }
 
 
         // if (!this.hasCapability('measure_highest_level'))
@@ -135,19 +135,36 @@ class warndistrictDevice extends Device {
     }
 
     async convertWarnings(data){
-      let warnings = data.filter(x => (x[0] == this.getData().id ))[0];
+      let warnings = [];
+      warnings = await this.filterWarnings(data);
       this.log("warnings");
       this.log(warnings);
-      let warningList = warnings[1];
-      //this.log("warningList");
-      //this.log(warningList);
-      warningList.sort((a, b) => b.level - a.level);
-      //this.log("warningList sortiert");
-      //this.log(warningList);
-      //let warningListString = JSON.stringify(warningList);
-      //this.log("warningList als String");
-      //this.log(warningListString);
-      return warningList;
+      if (warnings.length > 0){
+        let warningList = warnings[1];
+        //this.log("warningList");
+        //this.log(warningList);
+        warningList.sort((a, b) => b.level - a.level);
+        //this.log("warningList sortiert");
+        //this.log(warningList);
+        //let warningListString = JSON.stringify(warningList);
+        //this.log("warningList als String");
+        //this.log(warningListString);
+        return warningList;
+      }
+      else {
+        return [];
+      }
+    }
+
+    async filterWarnings(data){
+      let warnings =  await data.filter(x => (x[0] == this.getData().id ))[0];
+      if (!warnings){
+        warnings = [];
+        return warnings;
+      }
+      else{
+        return warnings;
+      }
     }
 
   /**
