@@ -1,6 +1,6 @@
 {
   "id": "de.ronnywinkler.homey.dwdwarnings",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -24,6 +24,7 @@
     "email": "ronny.winkler@web.de"
   },
   "source": "https://github.com/RonnyWinkler/homey.dwdwarnings",
+  "homeyCommunityTopicId": 49943,
   "permissions": [],
   "contributing": {
       "donate": {

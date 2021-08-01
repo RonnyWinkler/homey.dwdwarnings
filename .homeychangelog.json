@@ -2,5 +2,9 @@
   "0.0.1": {
     "en": "Initial version",
     "de": "Initiale Version"
+  },
+  "0.0.2": {
+    "en": "Message on cleared warnings",
+    "de": "Benachrichtigung bei aufgehobene Warnungen"
   }
 }
