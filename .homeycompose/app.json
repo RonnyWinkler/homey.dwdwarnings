@@ -1,6 +1,6 @@
 {
   "id": "de.ronnywinkler.homey.dwdwarnings",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -8,8 +8,8 @@
     "de": "DWD Wetterwarnungen"
   },
   "description": {
-    "en": "Lass dich vor Unwettern und anderen Wetterereignissen warnen!",
-    "de": "Get warned of storms and other weather events!"
+    "en": "Get warned of storms and other weather events!",
+    "de": "Lass dich vor Unwettern und anderen Wetterereignissen warnen!"
   },
   "category": [
     "appliances"

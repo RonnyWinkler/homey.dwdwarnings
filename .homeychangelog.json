@@ -6,5 +6,9 @@
   "0.0.2": {
     "en": "Message on cleared warnings",
     "de": "Benachrichtigung bei aufgehobene Warnungen"
+  },
+  "0.0.3": {
+    "en": "Changed app description",
+    "de": "Änderung der App-Beschreibung"
   }
 }
