@@ -47,8 +47,12 @@ class warndistrictDevice extends Device {
             this.setCapabilityValue("measure_type", '');
             this.setCapabilityValue("measure_number_of_warnings", 0);
             // Old warnings existing? Create timeline message about cancel of warnings
-            let cancelMessage = this.homey.__("warning.cancelled") +' '+ this.getName();
-            this.homey.notifications.createNotification({excerpt: cancelMessage });
+            let messageCapability = this.homey.__("warning.cancelled") +' **'+ this.getName() + '**';
+            this.homey.notifications.createNotification({excerpt: messageCapability });
+            // set complete warning text into capability
+            messageCapability = this.homey.__("warning.cancelled") +' '+ this.getName();
+            // this.log("setCapabilityValue: measure_warnings:" + capabilityMessage);
+            this.setCapabilityValue("measure_warnings", messageCapability);
           }
           catch (error){
             this.log("Error setting capabilities: " + error.message);
@@ -71,30 +75,32 @@ class warndistrictDevice extends Device {
             else{
               this.setCapabilityValue("measure_number_of_warnings", 0);
             }
+
+            // Send timeline message for each warning
+            let capabilityMessage = '';
+            for(let i=0; i < warningList.length; i++ ){
+              let message = await this.composeMessage(warningList[i], true);
+              // this.log("Message");
+              // this.log(message);
+              this.homey.notifications.createNotification({excerpt: message});
+              // concatenate messages for capability (without bold text)
+              let messageCapability = await this.composeMessage(warningList[i], false);
+              if (capabilityMessage == ''){
+                capabilityMessage = messageCapability;
+              }
+              else
+              {
+                capabilityMessage = capabilityMessage + " + + + " + messageCapability;
+              }
+            } 
+            // set complete warning text into capability
+            // this.log("setCapabilityValue: measure_warnings:" + capabilityMessage);
+            this.setCapabilityValue("measure_warnings", capabilityMessage);
           }
           catch (error){
             this.log("Error setting capabilities: " + error.message);
           }
         }
-        // Send timeline message for each warning
-        let capabilityMessage = '';
-        for(let i=0; i < warningList.length; i++ ){
-          let message = await this.composeMessage(warningList[i]);
-          // this.log("Message");
-          // this.log(message);
-          this.homey.notifications.createNotification({excerpt: message});
-          // concatenate messages for capability
-          if (capabilityMessage == ''){
-            capabilityMessage = message;
-          }
-          else
-          {
-            capabilityMessage = capabilityMessage + " /// " + message;
-          }
-        } 
-        // set complete warning text into capability
-        // this.log("setCapabilityValue: measure_warnings:" + capabilityMessage);
-        this.setCapabilityValue("measure_warnings", capabilityMessage);
       }
       else
       {
@@ -102,14 +108,21 @@ class warndistrictDevice extends Device {
       }
     }
 
-    async composeMessage(warning){
-      let message = this.homey.__("warning.warningFor") + " **" + this.getName()+"**";
-      message = message + " - **"+warning.headline+"**";
+    async composeMessage(warning, boldText = true){
+      let boldParam = '';
+      if (boldText){
+        boldParam = '**';
+      }
+      let message = this.homey.__("warning.warningFor") + " " + boldParam + this.getName() + boldParam;
+      message = message + " - " + boldParam + warning.headline + boldParam;
       message = message + " - " + this.homey.__("warning.warnLevel") + ": " + warning.level;
       message = message + " - "+warning.description;
       let from = await this.convertDateToString(new Date(warning.start));                     
       let to = await this.convertDateToString(new Date(warning.end));                     
-      message = message + " - " + this.homey.__("warning.warnPeriod") + ": " + from + " " + this.homey.__("warning.warnPeriodTo") + " " + to;
+      message = message + " - " + this.homey.__("warning.warnPeriod") + ": " + 
+                boldParam + from + boldParam +
+                " " + this.homey.__("warning.warnPeriodTo") + " " + 
+                boldParam + to + boldParam;
       return message;
     }
 

@@ -10,5 +10,13 @@
   "0.0.3": {
     "en": "Changed app description",
     "de": "Änderung der App-Beschreibung"
+  },
+  "0.0.4": {
+    "en": "Set cancel message to capability",
+    "de": "Schreibe Aufhebungs-Meldung in Geräteattribut"
+  },
+  "0.0.5": {
+    "en": "Set cancel message to capability",
+    "de": "Schreibe Aufhebungs-Meldung in Geräteattribut"
   }
 }
