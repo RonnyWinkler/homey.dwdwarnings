@@ -26,9 +26,11 @@ class warndistrictDevice extends Device {
         //     await this.addCapability('measure_type');
         // }
         
+        // Register bind-references fopr event handler
+        this.onDeviceUpdateHandler = this.onDeviceUpdate.bind(this);
 
         // register eventhandler for device updates
-        this.homey.app.events.on("deviceUpdateWarndistrict", this.onDeviceUpdate.bind(this));
+        this.homey.app.events.on("deviceUpdateWarndistrict", this.onDeviceUpdateHandler);
     }
 
     async onDeviceUpdate(data){
@@ -213,6 +215,7 @@ class warndistrictDevice extends Device {
    * onDeleted is called when the user deleted the device.
    */
   async onDeleted() {
+    this.homey.app.events.removeListener("deviceUpdateWarndistrict", this.onDeviceUpdateHandler);
     this.log('Warndistrict has been deleted');
   }
 

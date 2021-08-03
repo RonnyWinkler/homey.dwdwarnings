@@ -18,5 +18,9 @@
   "0.0.5": {
     "en": "Set cancel message to capability",
     "de": "Schreibe Aufhebungs-Meldung in Geräteattribut"
+  },
+  "0.0.6": {
+    "en": "Technical fix for device deletion",
+    "de": "Techn. Korrektur für Geräte-Löschung"
   }
 }
