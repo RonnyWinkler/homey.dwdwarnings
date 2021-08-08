@@ -79,6 +79,7 @@ class warndistrictDevice extends Device {
             }
 
             // Send timeline message for each warning
+            warningList.sort((a, b) => a.start - b.start);
             let capabilityMessage = '';
             for(let i=0; i < warningList.length; i++ ){
               let message = await this.composeMessage(warningList[i], true);
@@ -173,6 +174,7 @@ class warndistrictDevice extends Device {
 
     async filterWarnings(data){
       let warnings =  await data.filter(x => (x[0] == this.getData().id ))[0];
+      this.log(warnings);
       if (!warnings){
         warnings = [];
         return warnings;

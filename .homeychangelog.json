@@ -22,5 +22,9 @@
   "0.0.6": {
     "en": "Technical fix for device deletion",
     "de": "Techn. Korrektur für Geräte-Löschung"
+  },
+  "0.0.7": {
+    "en": "Timeline printout sorted by time (start time of event)",
+    "de": "Timeline-Ausgabe sortiert nach Zeit (Beginn des Ereignisses)"
   }
 }
