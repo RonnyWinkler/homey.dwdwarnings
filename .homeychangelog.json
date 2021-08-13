@@ -26,5 +26,9 @@
   "0.0.7": {
     "en": "Timeline printout sorted by time (start time of event)",
     "de": "Timeline-Ausgabe sortiert nach Zeit (Beginn des Ereignisses)"
+  },
+  "0.0.8": {
+    "en": "Alarm attribute, detail attributes for 3 warnings ",
+    "de": "Alarm-Attribut, Detail-Attribute für 3 Warnungen"
   }
 }

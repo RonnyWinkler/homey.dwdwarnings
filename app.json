@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "de.ronnywinkler.homey.dwdwarnings",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -57,11 +57,11 @@
       {
         "id": "measure_highest_level_changed",
         "title": {
-          "en": "The highest warning level has changed ",
+          "en": "The highest warning level has changed",
           "de": "Die höchste Warnstufe hat sich geändert"
         },
         "hint": {
-          "en": "The highest warning level has changed .",
+          "en": "The highest warning level has changed.",
           "de": "Die höchste Warnstufe hat sich geändert."
         },
         "args": [
@@ -75,11 +75,11 @@
       {
         "id": "measure_type_changed",
         "title": {
-          "en": "The warning type has changed ",
+          "en": "The warning type has changed",
           "de": "Der Warn-Typ hat sich geändert"
         },
         "hint": {
-          "en": "The warning type has changed .",
+          "en": "The warning type has changed.",
           "de": "Der Warn-Typ hat sich geändert."
         },
         "args": [
@@ -93,12 +93,48 @@
       {
         "id": "measure_warnings_changed",
         "title": {
-          "en": "The warnings have changed ",
+          "en": "The warnings have changed",
           "de": "Die Warnungen haben sich geändert"
         },
         "hint": {
-          "en": "The warning have changed .",
+          "en": "The warning have changed.",
           "de": "Die Warnungen haben sich geändert."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ]
+      },
+      {
+        "id": "alarm_warnings_true",
+        "title": {
+          "en": "Warning alarm has been activated",
+          "de": "Warnungs-Alarm wurde aktiviert"
+        },
+        "hint": {
+          "en": "The alarm in the device has been activated. This happens as soon as the first warning is reported.",
+          "de": "Der Alarm im Gerät wurde aktiviert. Dies geschieht, sobald die erste Warnung gemeldet wird."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ]
+      },
+      {
+        "id": "alarm_warnings_false",
+        "title": {
+          "en": "Warning alarm has been deactivated",
+          "de": "Warnungs-Alarm wurde deaktiviert"
+        },
+        "hint": {
+          "en": "The alarm in the device has been deactivated. This happens as soon as the last warning has been cleared.",
+          "de": "Der Alarm im Gerät wurde deaktiviert. Dies geschieht, sobald die letzte Warnung aufgehoben wurde."
         },
         "args": [
           {
@@ -143,7 +179,20 @@
         "measure_highest_level",
         "measure_type",
         "measure_warnings",
-        "last_warnings"
+        "last_warnings",
+        "alarm_warnings",
+        "warning_01_type",
+        "warning_01_level",
+        "warning_01_period",
+        "warning_01_description",
+        "warning_02_type",
+        "warning_02_level",
+        "warning_02_period",
+        "warning_02_description",
+        "warning_03_type",
+        "warning_03_level",
+        "warning_03_period",
+        "warning_03_description"
       ],
       "defaultCapabilities": [
         "measure_number_of_warnings"
@@ -192,11 +241,23 @@
     }
   ],
   "capabilities": {
+    "alarm_warnings": {
+      "type": "boolean",
+      "title": {
+        "en": "Warnings present",
+        "de": "Warnungen vorhanden"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "icon": "/assets/alarm_warnings.svg"
+    },
     "last_warnings": {
       "type": "string",
       "title": {
-        "en": "Type",
-        "de": "Typ"
+        "en": "last warning (JSON)",
+        "de": "Letzte Warnung (JSON)"
       },
       "getable": true,
       "setable": false,
@@ -250,6 +311,150 @@
       "setable": false,
       "uiComponent": null,
       "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_01_description": {
+      "type": "string",
+      "title": {
+        "en": "Warning 1 - description",
+        "de": "Warnung 1 - Beschreibung"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_01_level": {
+      "type": "number",
+      "title": {
+        "en": "Warning 1 - level",
+        "de": "Warnung 1 - Stufe"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_01_period": {
+      "type": "string",
+      "title": {
+        "en": "Warning 1 - period",
+        "de": "Warnung 1 - Zeitraum"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_01_type": {
+      "type": "string",
+      "title": {
+        "en": "Warning 1 - type",
+        "de": "Warnung 1 - Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_02_description": {
+      "type": "string",
+      "title": {
+        "en": "Warning 2 - description",
+        "de": "Warnung 2 - Beschreibung"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_02_level": {
+      "type": "number",
+      "title": {
+        "en": "Warning 2 - level",
+        "de": "Warnung 2 - Stufe"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_02_period": {
+      "type": "string",
+      "title": {
+        "en": "Warning 2 - period",
+        "de": "Warnung 2 - Zeitraum"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_02_type": {
+      "type": "string",
+      "title": {
+        "en": "Warning 2 - type",
+        "de": "Warnung 2 - Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_03_description": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - description",
+        "de": "Warnung 3 - Beschreibung"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_03_level": {
+      "type": "number",
+      "title": {
+        "en": "Warning 3 - level",
+        "de": "Warnung 3 - Stufe"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_03_period": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - period",
+        "de": "Warnung 3 - Zeitraum"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_03_type": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - type",
+        "de": "Warnung 3 - Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
       "icon": "/assets/measure_number_of_warnings.svg"
     }
   }

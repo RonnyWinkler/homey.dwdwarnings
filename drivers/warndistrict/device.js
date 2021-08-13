@@ -16,16 +16,63 @@ class warndistrictDevice extends Device {
         //     await this.addCapability('last_warnings');
         // }
 
+        // Add new capabilities (if not already added)
+        if (!this.hasCapability('alarm_warnings'))
+        {
+            await this.addCapability('alarm_warnings');
+        }
 
-        // if (!this.hasCapability('measure_highest_level'))
-        // {
-        //     await this.addCapability('measure_highest_level');
-        // }
-        // if (!this.hasCapability('measure_type'))
-        // {
-        //     await this.addCapability('measure_type');
-        // }
-        
+        if (!this.hasCapability('warning_01_type'))
+        {
+            await this.addCapability('warning_01_type');
+        }
+        if (!this.hasCapability('warning_01_level'))
+        {
+            await this.addCapability('warning_01_level');
+        }
+        if (!this.hasCapability('warning_01_period'))
+        {
+            await this.addCapability('warning_01_period');
+        }
+        if (!this.hasCapability('warning_01_description'))
+        {
+            await this.addCapability('warning_01_description');
+        }
+       
+        if (!this.hasCapability('warning_02_type'))
+        {
+            await this.addCapability('warning_02_type');
+        }
+        if (!this.hasCapability('warning_02_level'))
+        {
+            await this.addCapability('warning_02_level');
+        }
+        if (!this.hasCapability('warning_02_period'))
+        {
+            await this.addCapability('warning_02_period');
+        }
+        if (!this.hasCapability('warning_02_description'))
+        {
+            await this.addCapability('warning_02_description');
+        }
+
+        if (!this.hasCapability('warning_03_type'))
+        {
+            await this.addCapability('warning_03_type');
+        }
+        if (!this.hasCapability('warning_03_level'))
+        {
+            await this.addCapability('warning_03_level');
+        }
+        if (!this.hasCapability('warning_03_period'))
+        {
+            await this.addCapability('warning_03_period');
+        }
+        if (!this.hasCapability('warning_03_description'))
+        {
+            await this.addCapability('warning_03_description');
+        }
+
         // Register bind-references fopr event handler
         this.onDeviceUpdateHandler = this.onDeviceUpdate.bind(this);
 
@@ -39,7 +86,6 @@ class warndistrictDevice extends Device {
       let warningList = await this.convertWarnings(data);
       // check if warnings have changed
       if( await this.getCapabilityValue("last_warnings") != JSON.stringify(warningList) ){
-
         if (warningList.length == 0){
           // no warnings, clear all capabilities
           try{
@@ -55,6 +101,12 @@ class warndistrictDevice extends Device {
             messageCapability = this.homey.__("warning.cancelled") +' '+ this.getName();
             // this.log("setCapabilityValue: measure_warnings:" + capabilityMessage);
             this.setCapabilityValue("measure_warnings", messageCapability);
+            // alarm_warnings
+            this.setCapabilityValue("alarm_warnings", false);
+            // clear single warning capabilities
+            this.clearWarningCapability(0);
+            this.clearWarningCapability(1);
+            this.clearWarningCapability(2);
           }
           catch (error){
             this.log("Error setting capabilities: " + error.message);
@@ -95,10 +147,19 @@ class warndistrictDevice extends Device {
               {
                 capabilityMessage = capabilityMessage + " + + + " + messageCapability;
               }
+              // set warning capabilities 01..03 
+              await this.setWarningCapability(i, warningList[i]);
             } 
             // set complete warning text into capability
             // this.log("setCapabilityValue: measure_warnings:" + capabilityMessage);
             this.setCapabilityValue("measure_warnings", capabilityMessage);
+            // alarm_warnings
+            if (warningList.length > 0){
+              this.setCapabilityValue("alarm_warnings", true);
+            }
+            else{
+              this.setCapabilityValue("alarm_warnings", false);
+            }
           }
           catch (error){
             this.log("Error setting capabilities: " + error.message);
@@ -109,6 +170,61 @@ class warndistrictDevice extends Device {
       {
         this.log("No new warnings found for device");
       }
+    }
+
+    /**
+     * 
+     * @param {*} id:  ID of warning capability (0 .. 2)
+     * This ID is converted into 01 .. 03 for capability name
+     */
+    async clearWarningCapability(id = 0){
+      if (id < 0 || id > 2){
+        return;
+      }
+      id = id + 1;
+      let idText = id.toString();
+      if (idText.length < 2){
+        idText = '0' + idText;
+      }
+      try{
+        this.log("clearWarningCapability() => capability: " + 'warning_'+idText+'_*');
+        this.setCapabilityValue('warning_'+idText+'_type', '');
+        this.setCapabilityValue('warning_'+idText+'_level', 0);
+        this.setCapabilityValue('warning_'+idText+'_period', '');
+        this.setCapabilityValue('warning_'+idText+'_description', '');
+      }
+      catch (error){
+        this.log("Error setting capabilities: " + error.message);
+      }
+    }
+
+    /**
+     * 
+     * @param {*} id:  ID of warning capability (0 .. 2)
+     * This ID is converted into 01 .. 03 for capability name
+     */
+     async setWarningCapability(id = 0, warning){
+      if (id < 0 || id > 2){
+        return;
+      }
+      id = id + 1;
+      let idText = id.toString();
+      if (idText.length < 2){
+        idText = '0' + idText;
+      }
+      try{
+        this.log("setWarningCapability() => capability: " + 'warning_'+idText+'_*');
+        this.setCapabilityValue('warning_'+idText+'_type', warning.event);
+        this.setCapabilityValue('warning_'+idText+'_level', warning.level);
+        this.setCapabilityValue('warning_'+idText+'_description', warning.description.substring(0, Math.min(255,warning.description.length)));
+        let from = await this.convertDateToString(new Date(warning.start));                     
+        let to = await this.convertDateToString(new Date(warning.end));                     
+        this.setCapabilityValue('warning_'+idText+'_period', from +' - '+to);
+      }
+      catch (error){
+        this.log("Error setting capabilities: " + error.message);
+      }
+
     }
 
     async composeMessage(warning, boldText = true){
@@ -153,7 +269,7 @@ class warndistrictDevice extends Device {
     async convertWarnings(data){
       let warnings = [];
       warnings = await this.filterWarnings(data);
-      this.log("warnings");
+      this.log("convertWarnings() => warnings");
       this.log(warnings);
       if (warnings.length > 0){
         let warningList = warnings[1];
@@ -174,7 +290,8 @@ class warndistrictDevice extends Device {
 
     async filterWarnings(data){
       let warnings =  await data.filter(x => (x[0] == this.getData().id ))[0];
-      this.log(warnings);
+      //this.log("filterWarnings()");
+      //this.log(warnings);
       if (!warnings){
         warnings = [];
         return warnings;

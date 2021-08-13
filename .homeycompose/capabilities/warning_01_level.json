@@ -1,8 +1,8 @@
 {
-    "type": "string",
+    "type": "number",
     "title": {
-        "en": "last warning (JSON)",
-        "de": "Letzte Warnung (JSON)"
+        "en": "Warning 1 - level",
+        "de": "Warnung 1 - Stufe"
     },
     "getable": true,
     "setable": false,

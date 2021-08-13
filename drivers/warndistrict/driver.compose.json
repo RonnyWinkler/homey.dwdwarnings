@@ -10,7 +10,20 @@
     "measure_highest_level",
     "measure_type",
     "measure_warnings",
-    "last_warnings"
+    "last_warnings",
+    "alarm_warnings",
+    "warning_01_type",
+    "warning_01_level",
+    "warning_01_period",
+    "warning_01_description",
+    "warning_02_type",
+    "warning_02_level",
+    "warning_02_period",
+    "warning_02_description",
+    "warning_03_type",
+    "warning_03_level",
+    "warning_03_period",
+    "warning_03_description"
   ],
   "defaultCapabilities": [
     "measure_number_of_warnings"
