@@ -30,5 +30,9 @@
   "0.0.8": {
     "en": "Alarm attribute, detail attributes for 3 warnings ",
     "de": "Alarm-Attribut, Detail-Attribute für 3 Warnungen"
+  },
+  "0.0.9": {
+    "en": "Alarm attribute, detail attributes for 3 warnings, alarm caption",
+    "de": "Alarm-Attribut, Detail-Attribute für 3 Warnungen, Alarm-Insights-Bez."
   }
 }

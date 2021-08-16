@@ -16,12 +16,11 @@ class warndistrictDevice extends Device {
         //     await this.addCapability('last_warnings');
         // }
 
-        // Add new capabilities (if not already added)
+        // v.0.0.8: Add new capabilities (if not already added)
         if (!this.hasCapability('alarm_warnings'))
         {
             await this.addCapability('alarm_warnings');
         }
-
         if (!this.hasCapability('warning_01_type'))
         {
             await this.addCapability('warning_01_type');
@@ -38,7 +37,6 @@ class warndistrictDevice extends Device {
         {
             await this.addCapability('warning_01_description');
         }
-       
         if (!this.hasCapability('warning_02_type'))
         {
             await this.addCapability('warning_02_type');
@@ -55,7 +53,6 @@ class warndistrictDevice extends Device {
         {
             await this.addCapability('warning_02_description');
         }
-
         if (!this.hasCapability('warning_03_type'))
         {
             await this.addCapability('warning_03_type');

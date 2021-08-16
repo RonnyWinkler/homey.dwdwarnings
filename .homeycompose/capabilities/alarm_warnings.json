@@ -8,5 +8,13 @@
     "setable": false,
     "uiComponent": "sensor",
     "insights": true,
+    "insightsTitleTrue": { 
+        "en": "Warnings present",
+        "de": "Warnungen vorhanden"
+    },
+    "insightsTitleFalse": { 
+        "en": "Warnings not present",
+        "de": "Keine Warnungen vorhanden"
+    },
     "icon": "/assets/alarm_warnings.svg"
 }

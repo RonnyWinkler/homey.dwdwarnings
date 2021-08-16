@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "de.ronnywinkler.homey.dwdwarnings",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -251,6 +251,14 @@
       "setable": false,
       "uiComponent": "sensor",
       "insights": true,
+      "insightsTitleTrue": {
+        "en": "Warnings present",
+        "de": "Warnungen vorhanden"
+      },
+      "insightsTitleFalse": {
+        "en": "Warnings not present",
+        "de": "Keine Warnungen vorhanden"
+      },
       "icon": "/assets/alarm_warnings.svg"
     },
     "last_warnings": {
