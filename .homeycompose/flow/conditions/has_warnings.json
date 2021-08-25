@@ -1,0 +1,18 @@
+{
+    "id": "has_warnings",
+    "title": {
+        "en": "Warnings !{{are|aren't}} present",
+        "de": "Warnungen !{{sind|sind nicht}} vorhanden"
+    },
+    "hint": {
+        "en": "This Flow will continue if warnings are/are not currently present.",
+        "de": "Dieser Flow wird fortgeführt, wenn Warnungen derzeit vorhanden/nicht vorhanden sind."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+        }
+      ]
+}

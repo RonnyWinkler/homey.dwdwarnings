@@ -1,0 +1,18 @@
+{
+    "id": "alarm_warnings_false",
+    "title": {
+        "en": "Warning alarm has been deactivated",
+        "de": "Warnungs-Alarm wurde deaktiviert"
+    },
+    "hint": {
+        "en": "The alarm in the device has been deactivated. This happens as soon as the last warning has been cleared.",
+        "de": "Der Alarm im Gerät wurde deaktiviert. Dies geschieht, sobald die letzte Warnung aufgehoben wurde."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+        }
+      ]
+}

@@ -7,15 +7,25 @@ class warndistrictDevice extends Device {
    * onInit is called when the device is initialized.
    */
     async onInit() {
-        this.log('Warndistrict has been initialized');
+      this.log('Warndistrict has been initialized');
 
-        // TEST: Clear capability to interpret current warnings as new
-        // await this.removeCapability('last_warnings');
-        // if (!this.hasCapability('last_warnings'))
-        // {
-        //     await this.addCapability('last_warnings');
-        // }
+      // TEST: Clear capability to interpret current warnings as new
+      // await this.removeCapability('last_warnings');
+      // if (!this.hasCapability('last_warnings'))
+      // {
+      //     await this.addCapability('last_warnings');
+      // }
 
+      await this.updateCapabilities();
+
+      // Register bind-references fopr event handler
+      this.onDeviceUpdateHandler = this.onDeviceUpdate.bind(this);
+
+      // register eventhandler for device updates
+      this.homey.app.events.on("deviceUpdateWarndistrict", this.onDeviceUpdateHandler);
+    }
+
+    async updateCapabilities(){
         // v.0.0.8: Add new capabilities (if not already added)
         if (!this.hasCapability('alarm_warnings'))
         {
@@ -69,12 +79,6 @@ class warndistrictDevice extends Device {
         {
             await this.addCapability('warning_03_description');
         }
-
-        // Register bind-references fopr event handler
-        this.onDeviceUpdateHandler = this.onDeviceUpdate.bind(this);
-
-        // register eventhandler for device updates
-        this.homey.app.events.on("deviceUpdateWarndistrict", this.onDeviceUpdateHandler);
     }
 
     async onDeviceUpdate(data){

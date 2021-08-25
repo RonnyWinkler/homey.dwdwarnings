@@ -11,12 +11,6 @@ class warndistrictDriver extends Driver {
   async onInit() {
     this.log('Warndistrict has been initialized');
     this.warncellname = '';
-    
-    let hasWarnings = this.homey.flow.getConditionCard('has_warnings');
-    hasWarnings.registerRunListener(async (args, state) =>
-    {
-        return args.device.getCapabilityValue('has_warnings'); // true or false
-    });
   }
 
   async onPair(session) {

@@ -1,0 +1,18 @@
+{
+    "id": "alarm_warnings_true",
+    "title": {
+        "en": "Warning alarm has been activated",
+        "de": "Warnungs-Alarm wurde aktiviert"
+    },
+    "hint": {
+        "en": "The alarm in the device has been activated. This happens as soon as the first warning is reported.",
+        "de": "Der Alarm im Gerät wurde aktiviert. Dies geschieht, sobald die erste Warnung gemeldet wird."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+        }
+      ]
+}

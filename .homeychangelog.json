@@ -34,5 +34,9 @@
   "0.0.9": {
     "en": "Alarm attribute, detail attributes for 3 warnings, alarm caption",
     "de": "Alarm-Attribut, Detail-Attribute für 3 Warnungen, Alarm-Insights-Bez."
+  },
+  "0.0.10": {
+    "en": "Added flow tokens for flow trigger",
+    "de": "Flow-Token (Lokale Tags) für Flow-Auslöser ergänzt"
   }
 }

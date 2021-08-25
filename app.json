@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "de.ronnywinkler.homey.dwdwarnings",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -37,73 +37,19 @@
   "flow": {
     "triggers": [
       {
-        "id": "measure_number_of_warnings_changed",
+        "id": "alarm_warnings_false",
         "title": {
-          "en": "The number of warnings has changed",
-          "de": "Die Anzahl der Warnungen hat sich geändert"
+          "en": "Warning alarm has been deactivated",
+          "de": "Warnungs-Alarm wurde deaktiviert"
         },
         "hint": {
-          "en": "The number of warnings has changed.",
-          "de": "Die Anzahl der Warnungen hat sich geändert."
+          "en": "The alarm in the device has been deactivated. This happens as soon as the last warning has been cleared.",
+          "de": "Der Alarm im Gerät wurde deaktiviert. Dies geschieht, sobald die letzte Warnung aufgehoben wurde."
         },
         "args": [
           {
-            "type": "device",
             "name": "device",
-            "filter": "driver_id=warndistrict"
-          }
-        ]
-      },
-      {
-        "id": "measure_highest_level_changed",
-        "title": {
-          "en": "The highest warning level has changed",
-          "de": "Die höchste Warnstufe hat sich geändert"
-        },
-        "hint": {
-          "en": "The highest warning level has changed.",
-          "de": "Die höchste Warnstufe hat sich geändert."
-        },
-        "args": [
-          {
             "type": "device",
-            "name": "device",
-            "filter": "driver_id=warndistrict"
-          }
-        ]
-      },
-      {
-        "id": "measure_type_changed",
-        "title": {
-          "en": "The warning type has changed",
-          "de": "Der Warn-Typ hat sich geändert"
-        },
-        "hint": {
-          "en": "The warning type has changed.",
-          "de": "Der Warn-Typ hat sich geändert."
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=warndistrict"
-          }
-        ]
-      },
-      {
-        "id": "measure_warnings_changed",
-        "title": {
-          "en": "The warnings have changed",
-          "de": "Die Warnungen haben sich geändert"
-        },
-        "hint": {
-          "en": "The warning have changed.",
-          "de": "Die Warnungen haben sich geändert."
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
             "filter": "driver_id=warndistrict"
           }
         ]
@@ -120,27 +66,125 @@
         },
         "args": [
           {
-            "type": "device",
             "name": "device",
+            "type": "device",
             "filter": "driver_id=warndistrict"
           }
         ]
       },
       {
-        "id": "alarm_warnings_false",
+        "id": "measure_highest_level_changed",
         "title": {
-          "en": "Warning alarm has been deactivated",
-          "de": "Warnungs-Alarm wurde deaktiviert"
+          "en": "The highest warning level has changed",
+          "de": "Die höchste Warnstufe hat sich geändert"
         },
         "hint": {
-          "en": "The alarm in the device has been deactivated. This happens as soon as the last warning has been cleared.",
-          "de": "Der Alarm im Gerät wurde deaktiviert. Dies geschieht, sobald die letzte Warnung aufgehoben wurde."
+          "en": "The highest warning level has changed.",
+          "de": "Die höchste Warnstufe hat sich geändert."
         },
         "args": [
           {
-            "type": "device",
             "name": "device",
+            "type": "device",
             "filter": "driver_id=warndistrict"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_highest_level",
+            "type": "number",
+            "title": {
+              "en": "Highest warning level",
+              "de": "Höchste Warnstufe"
+            },
+            "example": 3
+          }
+        ]
+      },
+      {
+        "id": "measure_number_of_warnings_changed",
+        "title": {
+          "en": "The number of warnings has changed",
+          "de": "Die Anzahl der Warnungen hat sich geändert"
+        },
+        "hint": {
+          "en": "The number of warnings has changed.",
+          "de": "Die Anzahl der Warnungen hat sich geändert."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_number_of_warnings",
+            "type": "number",
+            "title": {
+              "en": "Number of warnings",
+              "de": "Anzahl der Warnungen"
+            },
+            "example": 1
+          }
+        ]
+      },
+      {
+        "id": "measure_type_changed",
+        "title": {
+          "en": "The warning type has changed",
+          "de": "Der Warn-Typ hat sich geändert"
+        },
+        "hint": {
+          "en": "The warning type has changed.",
+          "de": "Der Warn-Typ hat sich geändert."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_type",
+            "type": "string",
+            "title": {
+              "en": "Type",
+              "de": "Typ"
+            },
+            "example": "WINDBÖEN"
+          }
+        ]
+      },
+      {
+        "id": "measure_warnings_changed",
+        "title": {
+          "en": "The warnings have changed",
+          "de": "Die Warnungen haben sich geändert"
+        },
+        "hint": {
+          "en": "The warning have changed.",
+          "de": "Die Warnungen haben sich geändert."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_warnings",
+            "type": "string",
+            "title": {
+              "en": "Warnings",
+              "de": "Warnungen"
+            },
+            "example": "Es treten Windböen mit Geschwindigkeiten um 55 km/h..."
           }
         ]
       }
@@ -158,8 +202,8 @@
         },
         "args": [
           {
-            "type": "device",
             "name": "device",
+            "type": "device",
             "filter": "driver_id=warndistrict"
           }
         ]
@@ -174,6 +218,9 @@
         "de": "Warn-Landkreis"
       },
       "class": "other",
+      "connectivity": [
+        "cloud"
+      ],
       "capabilities": [
         "measure_number_of_warnings",
         "measure_highest_level",

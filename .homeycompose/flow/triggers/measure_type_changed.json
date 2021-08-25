@@ -1,0 +1,29 @@
+{
+    "id": "measure_type_changed",
+    "title": {
+        "en": "The warning type has changed",
+        "de": "Der Warn-Typ hat sich geändert"
+    },
+    "hint": {
+        "en": "The warning type has changed.",
+        "de": "Der Warn-Typ hat sich geändert."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_type",
+            "type": "string",
+            "title": {
+                "en": "Type",
+                "de": "Typ"
+            },
+            "example": "WINDBÖEN"
+        }
+    ]
+}

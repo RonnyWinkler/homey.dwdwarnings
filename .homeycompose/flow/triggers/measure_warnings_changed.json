@@ -1,0 +1,29 @@
+{
+    "id": "measure_warnings_changed",
+    "title": {
+        "en": "The warnings have changed",
+        "de": "Die Warnungen haben sich geändert"
+    },
+    "hint": {
+        "en": "The warning have changed.",
+        "de": "Die Warnungen haben sich geändert."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_warnings",
+            "type": "string",
+            "title": {
+                "en": "Warnings",
+                "de": "Warnungen"
+            },
+            "example": "Es treten Windböen mit Geschwindigkeiten um 55 km/h..."
+        }
+    ]
+}

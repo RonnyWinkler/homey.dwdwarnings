@@ -5,6 +5,7 @@
     "de": "Warn-Landkreis"
   },
   "class": "other",
+  "connectivity": ["cloud"],
   "capabilities": [
     "measure_number_of_warnings",
     "measure_highest_level",

@@ -30,8 +30,8 @@ class dwdWarnApp extends Homey.App {
     // read app settings
     await this.readSettings();
     
-    this.homey.settings.on('set', async (key) =>
-    {
+    // Register settings listener
+    this.homey.settings.on('set', async (key) => {
         if (key === 'settings')
         {
           await this.readSettings();
@@ -39,8 +39,15 @@ class dwdWarnApp extends Homey.App {
           if (this.active)
             await this.start();
         }
-      });
+    });
 
+    // Register flow condition listeners
+    let hasWarningsCondition = this.homey.flow.getConditionCard('has_warnings');
+    hasWarningsCondition.registerRunListener(async (args, state) => {
+        return args.device.getCapabilityValue('alarm_warnings'); // true or false
+    });
+  
+    // START WORK...
     if (this.active)
       setTimeout(() => this.start().catch(e => console.log(e)), 2 * 1000 );
     else

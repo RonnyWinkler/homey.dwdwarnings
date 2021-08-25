@@ -1,0 +1,29 @@
+{
+    "id": "measure_number_of_warnings_changed",
+    "title": {
+        "en": "The number of warnings has changed",
+        "de": "Die Anzahl der Warnungen hat sich geändert"
+    },
+    "hint": {
+        "en": "The number of warnings has changed.",
+        "de": "Die Anzahl der Warnungen hat sich geändert."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_number_of_warnings",
+            "type": "number",
+            "title": {
+                "en": "Number of warnings",
+                "de": "Anzahl der Warnungen"
+            },
+            "example": 1
+        }
+    ]
+}

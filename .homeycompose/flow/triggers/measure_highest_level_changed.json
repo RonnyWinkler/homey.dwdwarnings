@@ -1,0 +1,29 @@
+{
+    "id": "measure_highest_level_changed",
+    "title": {
+        "en": "The highest warning level has changed",
+        "de": "Die höchste Warnstufe hat sich geändert"
+    },
+    "hint": {
+        "en": "The highest warning level has changed.",
+        "de": "Die höchste Warnstufe hat sich geändert."
+    },
+    "args": [
+        {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=warndistrict"
+        }
+    ],
+    "tokens": [
+        {
+            "name": "measure_highest_level",
+            "type": "number",
+            "title": {
+                "en": "Highest warning level",
+                "de": "Höchste Warnstufe"
+            },
+            "example": 3
+        }
+    ]
+}
