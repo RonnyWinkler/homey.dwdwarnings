@@ -38,5 +38,13 @@
   "0.0.10": {
     "en": "Added flow tokens for flow trigger",
     "de": "Flow-Token (Lokale Tags) für Flow-Auslöser ergänzt"
+  },
+  "0.0.11": {
+    "en": "Warncell list filtered according to valid districts",
+    "de": "Warncell-Liste nach gültigen Landkreisen gefiltert"
+  },
+  "0.0.12": {
+    "en": "Warnings for local authority (neew device type)",
+    "de": "Warnungen auf Gemeinde-Ebene (neuer Gerätetyp)"
   }
 }

@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Type",
+        "de": "Typ"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": null,
+    "insights": true,
+    "icon": "/assets/measure_number_of_warnings.svg"
+}

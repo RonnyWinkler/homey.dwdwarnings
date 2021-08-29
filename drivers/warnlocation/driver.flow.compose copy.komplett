@@ -1,0 +1,83 @@
+{
+    "triggers": [
+        {
+            "id": "measure_number_of_warnings_changed",
+            "title": {
+                "en": "The number of warnings has changed",
+                "de": "Die Anzahl der Warnungen hat sich geändert"
+            },
+            "hint": {
+                "en": "The number of warnings has changed.",
+                "de": "Die Anzahl der Warnungen hat sich geändert."
+            }
+        },
+        {
+            "id": "measure_highest_level_changed",
+            "title": {
+                "en": "The highest warning level has changed",
+                "de": "Die höchste Warnstufe hat sich geändert"
+            },
+            "hint": {
+                "en": "The highest warning level has changed.",
+                "de": "Die höchste Warnstufe hat sich geändert."
+            }
+        },
+        {
+            "id": "measure_type_changed",
+            "title": {
+                "en": "The warning type has changed",
+                "de": "Der Warn-Typ hat sich geändert"
+            },
+            "hint": {
+                "en": "The warning type has changed.",
+                "de": "Der Warn-Typ hat sich geändert."
+            }
+        },
+        {
+            "id": "measure_warnings_changed",
+            "title": {
+                "en": "The warnings have changed",
+                "de": "Die Warnungen haben sich geändert"
+            },
+            "hint": {
+                "en": "The warning have changed.",
+                "de": "Die Warnungen haben sich geändert."
+            }
+        },
+        {
+            "id": "alarm_warnings_true",
+            "title": {
+                "en": "Warning alarm has been activated",
+                "de": "Warnungs-Alarm wurde aktiviert"
+            },
+            "hint": {
+                "en": "The alarm in the device has been activated. This happens as soon as the first warning is reported.",
+                "de": "Der Alarm im Gerät wurde aktiviert. Dies geschieht, sobald die erste Warnung gemeldet wird."
+            }
+        },
+        {
+            "id": "alarm_warnings_false",
+            "title": {
+                "en": "Warning alarm has been deactivated",
+                "de": "Warnungs-Alarm wurde deaktiviert"
+            },
+            "hint": {
+                "en": "The alarm in the device has been deactivated. This happens as soon as the last warning has been cleared.",
+                "de": "Der Alarm im Gerät wurde deaktiviert. Dies geschieht, sobald die letzte Warnung aufgehoben wurde."
+            }
+        }
+    ],
+    "conditions": [
+        {
+            "id": "has_warnings",
+            "title": {
+                "en": "Warnings !{{are|aren't}} present",
+                "de": "Warnungen !{{sind|sind nicht}} vorhanden"
+            },
+            "hint": {
+                "en": "This Flow will continue if warnings are/are not currently present.",
+                "de": "Dieser Flow wird fortgeführt, wenn Warnungen derzeit vorhanden/nicht vorhanden sind."
+            }
+        }
+    ]
+}

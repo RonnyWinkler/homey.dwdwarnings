@@ -1,6 +1,6 @@
 <script type="application/javascript">
 
-    Homey.setTitle(Homey.__("pair.title_warncellname_district"));
+    Homey.setTitle(Homey.__("pair.title_warncellname_location"));
     Homey.emit("warncellname", value).then(function (result) {
                 document.getElementById('found_nr').value = result; 
             });
@@ -13,7 +13,7 @@
   </script>
 
 <div id="warncellname" class="tabcontent">
-    <p data-i18n="pair.subtitle_warncellname1_district"></p>
+    <p data-i18n="pair.subtitle_warncellname1_location"></p>
     <p data-i18n="pair.subtitle_warncellname2"></p>
         <fieldset>
             <div class="field row">

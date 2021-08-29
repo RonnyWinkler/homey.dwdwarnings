@@ -1,8 +1,8 @@
 {
-  "id": "warndistrict",
+  "id": "warnlocation",
   "name": {
-    "en": "District or city",
-    "de": "Landkreis oder kreisfreie Stadt"
+    "en": "Local authority, city, district or area",
+    "de": "Gemeinde, Stadt, Landkreis oder Gebiet"
   },
   "class": "other",
   "connectivity": ["cloud"],
@@ -17,14 +17,32 @@
     "warning_01_level",
     "warning_01_period",
     "warning_01_description",
+    "warning_01_msgtype",
+    "warning_01_group",
+    "warning_01_severity",
+    "warning_01_type_ecii",
+    "warning_01_parametername",
+    "warning_01_parametervalue",
     "warning_02_type",
     "warning_02_level",
     "warning_02_period",
     "warning_02_description",
+    "warning_02_msgtype",
+    "warning_02_group",
+    "warning_02_severity",
+    "warning_02_type_ecii",
+    "warning_02_parametername",
+    "warning_02_parametervalue",
     "warning_03_type",
     "warning_03_level",
     "warning_03_period",
-    "warning_03_description"
+    "warning_03_description",
+    "warning_03_msgtype",
+    "warning_03_group",
+    "warning_03_severity",
+    "warning_03_type_ecii",
+    "warning_03_parametername",
+    "warning_03_parametervalue"
   ],
   "defaultCapabilities": [
     "measure_number_of_warnings"

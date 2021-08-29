@@ -12,7 +12,7 @@
         {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=warndistrict"
+            "filter": "driver_id=warndistrict|warnlocation"
         }
     ],
     "tokens": [

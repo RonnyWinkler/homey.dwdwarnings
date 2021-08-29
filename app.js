@@ -3,8 +3,10 @@
 const Homey = require('homey');
 // Events
 const EventEmitter = require('events');
+// HTTP handlert
 // Axios http rerquests
-const axios = require('axios');
+//const axios = require('axios');
+const https = require('https');
 
 // Services
 // default update interval (15 min)
@@ -88,58 +90,141 @@ class dwdWarnApp extends Homey.App {
     this.timeoutDevicesUpdate = setTimeout(() => this.devicesUpdate().catch(e => this.log(e)), this.updateInterval * 60 * 1000 );
     this.log("devicesUpdate()");
     try {
+      // Emit update trigger to warnlocation devices.
+      this.events.emit("deviceUpdateWarnlocation");
+      // Read DWD data for Warndistricts and push data to devices
       await this.getDWDdata();
       // Result-Handling (Response=>JSONP=>JSON=>DeviceUpdate in getDWDdata()=>parseDWDresponse())
     }
     catch (e) {
+      this.log(e.message);
       return;
     }
   }
 
+  async getUrl(url){
+    return new Promise( ( resolve, reject ) =>
+        {
+            try
+            {
+              let request = https
+                .get(url, (response) => { 
+                  if (response.statusCode !== 200){
+                    response.resume();
+
+                    let message = "";
+                    if ( response.statusCode === 204 )
+                    { message = "No Data Found"; }
+                    else if ( response.statusCode === 400 )
+                    { message = "Bad request"; }
+                    else if ( response.statusCode === 401 )
+                    { message = "Unauthorized"; }
+                    else if ( response.statusCode === 403 )
+                    { message = "Forbidden"; }
+                    else if ( response.statusCode === 404 )
+                    { message = "Not Found"; }
+                    reject( new Error( "HTTP Error: " + response.statusCode + " " + message ) );
+                    return;
+                  }
+                  else{
+                    let rawData = '';
+                    response.setEncoding('utf8');
+                    response.on( 'data', (chunk) => { rawData += chunk; })
+                    response.on( 'end', () => {
+                      resolve( rawData );
+                    })
+                  }
+                })
+                .on('error', (err) => {
+                  reject( new Error( "HTTP Error: " + err.message ) );
+                  return;
+                });
+              request.setTimeout( 5000, function()
+                {
+                  request.destroy();
+                  reject( new Error( "HTTP Catch: Timeout" ) );
+                  return;
+                });
+              }
+            catch ( err )
+            {
+                reject( new Error( "HTTP Catch: " + err.message ) );
+                return;
+            }
+        });
+
+  }
+
   async getDWDdata(){
     this.log("getDWDdata() -> Start http request...");
-    axios
-      .get(dwdUrl)
-      .then( async (response) => { this.parseDWDresponse(response) } )
-      .catch(err => {
-        this.log('Error: ', err.message);
-        return;
+
+    // HTTP with Axios:
+    // axios
+    //   .get(dwdUrl)
+    //   .then( async (response) => { this.parseDWDresponse(response) } )
+    //   .catch(err => {
+    //     this.log('Error: ', err.message);
+    //     return;
+    //   });
+    
+    // HTTP with Homey built in https:
+    // https
+    //   .get(dwdUrl, (response) => { 
+    //     const { statusCode } = response;
+    //     if (statusCode !== 200){
+    //       response.resume();
+    //       this.log("http error "+statusCode);
+    //       return;
+    //     }
+    //     let rawData = '';
+    //     response.setEncoding('utf8');
+    //     response.on( 'data', (chunk) => { rawData += chunk; })
+    //     response.on( 'end', () => {
+    //       this.log(rawData);
+    //       this.parseDWDresponse(rawData) 
+    //     })
+    //   })
+    //   .on('error', (err) => {
+    //     this.log('Error: ', err.message);
+    //     return;
+    //   });
+
+    this.getUrl(dwdUrl)
+      .then( data => {
+        //this.log("getDWDdata() => Reponse: "+data);
+        this.parseDWDresponse(data) 
+      })
+      .catch( (err) => {
+         this.log('getDWDdata() => HTTP-Error: ', err.message);
+         return;
       });
 
   };
 
-  async parseDWDresponse(response){
+  async parseDWDresponse(data){
     this.log("parseDWDresponse()");
-    if (response.status != 200){
-      this.log("http error "+response.status);
-      return;
+    let jsonString = await this.formatJSON(data);
+    // this.log("JSON-String: ");
+    // this.log(jsonString);
+    if( (jsonString) && (jsonString != this.lastDWDresponse) ){
+      this.log("New warnings!");
+      this.lastDWDresponse = jsonString;
+      let json = JSON.parse(jsonString).warnings;
+      // this.log("JSON: ");
+      // this.log(json);
+
+      var array = [];
+      for(var i in json)
+        array.push([i, json [i]]);
+      // this.log("Array:");
+      // this.log(array);
+
+      // Emit new warnings list to devices. 
+      // Devices will filter the list and read the warnings into capabilities.
+      this.events.emit("deviceUpdateWarndistrict", array);
     }
-    else
-    {
-      this.log('http code:', response.status);
-      let jsonString = await this.formatJSON(response.data);
-      // this.log("JSON-String: ");
-      // this.log(jsonString);
-      if( (jsonString) && (jsonString != this.lastDWDresponse) ){
-        this.log("New warnings!");
-        this.lastDWDresponse = jsonString;
-        let json = JSON.parse(jsonString).warnings;
-        // this.log("JSON: ");
-        // this.log(json);
-
-        var array = [];
-        for(var i in json)
-          array.push([i, json [i]]);
-        // this.log("Array:");
-        // this.log(array);
-
-        // Emit new warnings list to devices. 
-        // Devices will filter the list and read the warnings into capabilities.
-        this.events.emit("deviceUpdateWarndistrict", array);
-      }
-      else{
-        this.log("No new warnings.");
-      }
+    else{
+      this.log("No new warnings.");
     }
   }
 
