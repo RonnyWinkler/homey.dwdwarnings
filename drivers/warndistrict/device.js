@@ -3,6 +3,8 @@
 const { Device } = require('homey');
 // state URL for warnmap
 const state_url = require('../../state_url.js');
+// country URL
+const countryUrl = 'https://www.dwd.de/DWD/warnungen/warnapp_gemeinden/json/warnungen_gemeinde_map_de.png';
 
 class warndistrictDevice extends Device {
   /**
@@ -91,14 +93,18 @@ class warndistrictDevice extends Device {
       let imageUrl = await this.getImageURL();
       const mapImage = await this.homey.images.createImage();
       mapImage.setUrl(imageUrl);
-      this.setCameraImage('warnmap', this.homey.__('warnmap.title'), mapImage);
+      this.setCameraImage('warnmap', this.homey.__('warnmap.titleState'), mapImage);
+      // Image for Germany WarnMap
+      const mapImageGermany = await this.homey.images.createImage();
+      mapImageGermany.setUrl(countryUrl);
+      this.setCameraImage('warnmapGermany', this.homey.__('warnmap.titleCountry'), mapImageGermany);
     }
 
     async getImageURL(){
       let state = this.getData().id.toString().substring(1, 3);
-      this.log("State: "+state);
+      //this.log("State: "+state);
       let url = state_url.filter(x => (x.state == state))[0].url;
-      this.log("URL: "+url);
+      //this.log("URL: "+url);
       return url;
     } 
 
