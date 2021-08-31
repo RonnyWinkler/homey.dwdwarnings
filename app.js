@@ -156,50 +156,56 @@ class dwdWarnApp extends Homey.App {
   }
 
   async getDWDdata(){
-    this.log("getDWDdata() -> Start http request...");
+    this.log("getDWDdata() -> Listeners for DWD warndistrict: "+this.events.listenerCount('deviceUpdateWarndistrict'));
+    if (this.events.listenerCount('deviceUpdateWarndistrict') > 0) {
+      // HTTP with Axios:
+      // axios
+      //   .get(dwdUrl)
+      //   .then( async (response) => { this.parseDWDresponse(response) } )
+      //   .catch(err => {
+      //     this.log('Error: ', err.message);
+      //     return;
+      //   });
+      
+      // HTTP with Homey built in https:
+      // https
+      //   .get(dwdUrl, (response) => { 
+      //     const { statusCode } = response;
+      //     if (statusCode !== 200){
+      //       response.resume();
+      //       this.log("http error "+statusCode);
+      //       return;
+      //     }
+      //     let rawData = '';
+      //     response.setEncoding('utf8');
+      //     response.on( 'data', (chunk) => { rawData += chunk; })
+      //     response.on( 'end', () => {
+      //       this.log(rawData);
+      //       this.parseDWDresponse(rawData) 
+      //     })
+      //   })
+      //   .on('error', (err) => {
+      //     this.log('Error: ', err.message);
+      //     return;
+      //   });
 
-    // HTTP with Axios:
-    // axios
-    //   .get(dwdUrl)
-    //   .then( async (response) => { this.parseDWDresponse(response) } )
-    //   .catch(err => {
-    //     this.log('Error: ', err.message);
-    //     return;
-    //   });
-    
-    // HTTP with Homey built in https:
-    // https
-    //   .get(dwdUrl, (response) => { 
-    //     const { statusCode } = response;
-    //     if (statusCode !== 200){
-    //       response.resume();
-    //       this.log("http error "+statusCode);
-    //       return;
-    //     }
-    //     let rawData = '';
-    //     response.setEncoding('utf8');
-    //     response.on( 'data', (chunk) => { rawData += chunk; })
-    //     response.on( 'end', () => {
-    //       this.log(rawData);
-    //       this.parseDWDresponse(rawData) 
-    //     })
-    //   })
-    //   .on('error', (err) => {
-    //     this.log('Error: ', err.message);
-    //     return;
-    //   });
+      this.log("getDWDdata() -> Start http request...");
 
-    this.getUrl(dwdUrl)
-      .then( data => {
-        //this.log("getDWDdata() => Reponse: "+data);
-        this.parseDWDresponse(data) 
-      })
-      .catch( (err) => {
-         this.log('getDWDdata() => HTTP-Error: ', err.message);
-         return;
-      });
-
-  };
+      this.getUrl(dwdUrl)
+        .then( data => {
+          //this.log("getDWDdata() => Reponse: "+data);
+          this.parseDWDresponse(data) 
+        })
+        .catch( (err) => {
+          this.log('getDWDdata() => HTTP-Error: ', err.message);
+          return;
+        });
+    }
+    else {
+      this.log("getDWDdata() -> No Listeners for DWD warndistrict.");
+      return;
+    }
+  }
 
   async parseDWDresponse(data){
     this.log("parseDWDresponse()");

@@ -58,5 +58,9 @@
   "1.0.0": {
     "en": "Publish as stable release",
     "de": "Veröffentlichung als stabiles Release"
+  },
+  "1.0.1": {
+    "en": "Prevent reading DWD districs data if no devices are installed",
+    "de": "Verhindere das Lesen der DWD Landkreisdaten, wenn kein Gerät installiert ist."
   }
 }
