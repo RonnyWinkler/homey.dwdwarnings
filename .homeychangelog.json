@@ -46,5 +46,9 @@
   "0.0.12": {
     "en": "Warnings for local authority (neew device type)",
     "de": "Warnungen auf Gemeinde-Ebene (neuer Gerätetyp)"
+  },
+  "0.0.13": {
+    "en": "Added Warnmap for state and country",
+    "de": "Warnkarte für Bundesland und Deutschland ergänzt"
   }
 }

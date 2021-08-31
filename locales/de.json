@@ -23,5 +23,9 @@
         "warnPeriod": "Zeitraum",
         "warnPeriodTo": "bis",
         "cancelled": "Warnung aufgehoben für"
+    },
+    "warnmap": {
+        "titleState": "Warnkarte",
+        "titleCountry": "Warnkarte Deutschland"
     }
 }

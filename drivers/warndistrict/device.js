@@ -1,6 +1,8 @@
 'use strict';
 
 const { Device } = require('homey');
+// state URL for warnmap
+const state_url = require('../../state_url.js');
 
 class warndistrictDevice extends Device {
   /**
@@ -23,6 +25,9 @@ class warndistrictDevice extends Device {
 
       // register eventhandler for device updates
       this.homey.app.events.on("deviceUpdateWarndistrict", this.onDeviceUpdateHandler);
+
+      // Register Image
+      this.registerImage();
     }
 
     async updateCapabilities(){
@@ -80,6 +85,22 @@ class warndistrictDevice extends Device {
             await this.addCapability('warning_03_description');
         }
     }
+
+    async registerImage(){
+      // Image for WarnMap
+      let imageUrl = await this.getImageURL();
+      const mapImage = await this.homey.images.createImage();
+      mapImage.setUrl(imageUrl);
+      this.setCameraImage('warnmap', this.homey.__('warnmap.title'), mapImage);
+    }
+
+    async getImageURL(){
+      let state = this.getData().id.toString().substring(1, 3);
+      this.log("State: "+state);
+      let url = state_url.filter(x => (x.state == state))[0].url;
+      this.log("URL: "+url);
+      return url;
+    } 
 
     async onDeviceUpdate(data){
       this.log("onDeviceUpdate() Warncell-ID: "+this.getData().id);

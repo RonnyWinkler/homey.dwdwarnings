@@ -5,6 +5,10 @@ const { Device } = require('homey');
 const dwdUrl = 'https://maps.dwd.de/geoserver/dwd/wfs?service=WFS&request=GetFeature&typeName=dwd:Warnungen_Gemeinden&srsName=EPSG:4326&&outputFormat=application/json&cql_filter=WARNCELLID=';
 // EC_II Types => Warning level
 const ecii_level = require('./ecii.js');
+// state URL for warnmap
+const state_url = require('../../state_url.js');
+// country URL
+const countryUrl = 'https://www.dwd.de/DWD/warnungen/warnapp_gemeinden/json/warnungen_gemeinde_map_de.png';
 
 class warnlocationDevice extends Device {
   /**
@@ -20,11 +24,34 @@ class warnlocationDevice extends Device {
 
       // register eventhandler for device updates
       this.homey.app.events.on("deviceUpdateWarnlocation", this.onDeviceUpdateHandler);
+
+      // Register Image
+      this.registerImage();
     }
 
     async updateCapabilities(){
         // Add new capabilities (if not already added)
     }
+
+    async registerImage(){
+      // Image for WarnMap
+      let imageUrl = await this.getImageURL();
+      const mapImage = await this.homey.images.createImage();
+      mapImage.setUrl(imageUrl);
+      this.setCameraImage('warnmap', this.homey.__('warnmap.titleState'), mapImage);
+      // Image for Germany WarnMap
+      const mapImageGermany = await this.homey.images.createImage();
+      mapImageGermany.setUrl(countryUrl);
+      this.setCameraImage('warnmapGermany', this.homey.__('warnmap.titleCountry'), mapImageGermany);
+    }
+
+    async getImageURL(){
+      let state = this.getData().id.toString().substring(1, 3);
+      //this.log("State: "+state);
+      let url = state_url.filter(x => (x.state == state))[0].url;
+      //this.log("URL: "+url);
+      return url;
+    } 
 
     async onDeviceUpdate(data){
       this.log("onDeviceUpdate() Warncell-ID: "+this.getData().id);
@@ -156,7 +183,7 @@ class warnlocationDevice extends Device {
       let ecii_entry = ecii_level.filter(x => (x.ecii == parseInt(ecii)))[0];
       if (ecii_entry && ecii_entry.warninglevel)
       {
-        this.log("Warnlevel: "+ecii+" => "+ecii_entry.warninglevel);
+        //this.log("Warnlevel: "+ecii+" => "+ecii_entry.warninglevel);
         return ecii_entry.warninglevel;
       }
       else{

@@ -23,5 +23,9 @@
         "warnPeriod": "period",
         "warnPeriodTo": "to",
         "cancelled": "Warning cancelled for"
+    },
+    "warnmap": {
+        "titleState": "Warnmap",
+        "titleCountry": "Warnmap Germany"
     }
 }
