@@ -1,5 +1,6 @@
 {
     "id": "alarm_warnings_true",
+    "highlight": true,
     "title": {
         "en": "Warning alarm has been activated",
         "de": "Warnungs-Alarm wurde aktiviert"

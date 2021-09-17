@@ -62,5 +62,9 @@
   "1.0.1": {
     "en": "Prevent reading DWD districs data if no devices are installed",
     "de": "Verhindere das Lesen der DWD Landkreisdaten, wenn kein Gerät installiert ist."
+  },
+  "1.0.2": {
+    "en": "Highlight mot important trigger flows",
+    "de": "Die wichtigsten Flow-Auslöser in Auswahl hervorheben."
   }
 }

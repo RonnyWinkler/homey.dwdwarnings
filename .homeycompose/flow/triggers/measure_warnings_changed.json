@@ -1,5 +1,6 @@
 {
     "id": "measure_warnings_changed",
+    "highlight": true,
     "title": {
         "en": "The warnings have changed",
         "de": "Die Warnungen haben sich geändert"
