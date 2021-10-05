@@ -66,5 +66,9 @@
   "1.0.2": {
     "en": "Highlight mot important trigger flows",
     "de": "Die wichtigsten Flow-Auslöser in Auswahl hervorheben."
+  },
+  "1.0.3": {
+    "en": "Prevention of duplicate warnings.",
+    "de": "Verhinderung doppelter Warnungen."
   }
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 const { Device } = require('homey');
+const crypto = require('crypto');
 // DWD Service-URL
 const dwdUrl = 'https://maps.dwd.de/geoserver/dwd/wfs?service=WFS&request=GetFeature&typeName=dwd:Warnungen_Gemeinden&srsName=EPSG:4326&&outputFormat=application/json&cql_filter=WARNCELLID=';
 // EC_II Types => Warning level
@@ -68,6 +69,28 @@ class warnlocationDevice extends Device {
 
     }
 
+    async getWarningsHash(warningList){
+      if (warningList.length == 0){
+        return '';
+      }
+      else{
+        let content = '';
+        for(let i=0; i < warningList.length; i++ ){
+          content = content + warningList[i].properties.EVENT;
+          content = content + warningList[i].properties.EC_II;
+          content = content + warningList[i].properties.ONSET;
+          content = content + warningList[i].properties.EXPIRES;
+          content = content + warningList[i].properties.MSGTYPE;
+          content = content + warningList[i].properties.EC_GROUP;
+          content = content + warningList[i].properties.SEVERITY;
+          content = content + warningList[i].properties.PARAMETERNAME;
+          content = content + warningList[i].properties.PARAMETERVALUE;
+          content = content + warningList[i].properties.DESCRIPTION;
+        }
+        return crypto.createHash('sha1').update(content).digest('base64').toString();
+      }
+    }
+
     async parseDWDresponse(data){
       let json = JSON.parse(data);
       if (! json.features){
@@ -76,13 +99,18 @@ class warnlocationDevice extends Device {
       }
       let warningList = json.features;
       warningList.sort((a, b) => a.properties.ONSET - b.properties.ONSET);
-      if ( await this.getCapabilityValue("last_warnings") != JSON.stringify(warningList) ){
+      
+      let hash = await this.getWarningsHash(warningList);
+
+      //if ( await this.getCapabilityValue("last_warnings") != JSON.stringify(warningList) ){
+      if ( await this.getCapabilityValue("last_warnings") != hash ){
         
         if (warningList.length == 0){
           // no warnings, clear all capabilities
           try{
             this.log("onDeviceUpdate() - Changed warnings bot no entiries in list - clear capabilities.");
-            this.setCapabilityValue("last_warnings", JSON.stringify(warningList)),
+            //this.setCapabilityValue("last_warnings", JSON.stringify(warningList));
+            this.setCapabilityValue("last_warnings", hash);
             this.setCapabilityValue("measure_highest_level", 0);
             this.setCapabilityValue("measure_type", '');
             this.setCapabilityValue("measure_number_of_warnings", 0);
@@ -107,11 +135,10 @@ class warnlocationDevice extends Device {
         else{
           // message exists, write to capabilities
           try{
-            // Sort by alarm level (not sure which field is the right one)
-            //warnings.sort((a, b) => a.start - b.start);
             this.log("onDeviceUpdate() - Changed warnings!");
             // this.log("setCapabilityValue: last_warnings");
-            this.setCapabilityValue("last_warnings", JSON.stringify(warningList)),
+            //this.setCapabilityValue("last_warnings", JSON.stringify(warningList));
+            this.setCapabilityValue("last_warnings", hash);
             // this.log("setCapabilityValue: measure_highest_level:" + warningList[0].level);
             //this.setCapabilityValue("measure_highest_level", this.getWarningLevelByECII(warningList[0].properties.EC_II));
             this.setCapabilityValue("measure_highest_level", this.getHighestWarningLevel(warningList));
@@ -126,7 +153,8 @@ class warnlocationDevice extends Device {
             }
 
             // Send timeline message for each warning
-            warningList.sort((a, b) => this.getWarningLevelByECII(a.properties.EC_II) - this.getWarningLevelByECII(b.properties.EC_II));
+            // don't sort by warning level. Keep sort by start time
+            //warningList.sort((a, b) => this.getWarningLevelByECII(a.properties.EC_II) - this.getWarningLevelByECII(b.properties.EC_II));
             let capabilityMessage = '';
             for(let i=0; i < warningList.length; i++ ){
               let message = await this.composeMessage(warningList[i], true);
