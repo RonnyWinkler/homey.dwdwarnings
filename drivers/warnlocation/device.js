@@ -80,7 +80,7 @@ class warnlocationDevice extends Device {
           content = content + warningList[i].properties.EC_II;
           content = content + warningList[i].properties.ONSET;
           content = content + warningList[i].properties.EXPIRES;
-          content = content + warningList[i].properties.MSGTYPE;
+          //content = content + warningList[i].properties.MSGTYPE;
           content = content + warningList[i].properties.EC_GROUP;
           content = content + warningList[i].properties.SEVERITY;
           content = content + warningList[i].properties.PARAMETERNAME;

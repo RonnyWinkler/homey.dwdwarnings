@@ -70,5 +70,9 @@
   "1.0.3": {
     "en": "Prevention of duplicate warnings.",
     "de": "Verhinderung doppelter Warnungen."
+  },
+  "1.0.4": {
+    "en": "Prevention of duplicate warnings.",
+    "de": "Verhinderung doppelter Warnungen."
   }
 }
