@@ -74,5 +74,9 @@
   "1.0.4": {
     "en": "Prevention of duplicate warnings.",
     "de": "Verhinderung doppelter Warnungen."
+  },
+  "1.0.5": {
+    "en": "Prevention of duplicate warnings caused by wrong sorting.",
+    "de": "Verhinderung doppelter Warnungen aufgrund falscher Sortierung."
   }
 }
