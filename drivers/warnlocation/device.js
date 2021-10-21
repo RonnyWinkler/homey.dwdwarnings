@@ -76,7 +76,7 @@ class warnlocationDevice extends Device {
       else{
         let content = '';
         for(let i=0; i < warningList.length; i++ ){
-          //this.log("getWarningsHash Index "+i+" Entry: "+warningList[i].properties.ONSET + " " +warningList[i].properties.DESCRIPTION);
+          //this.log("getWarningsHash Index "+i+" Entry: "+warningList[i].properties.ONSET );
           content = content + warningList[i].properties.EVENT;
           content = content + warningList[i].properties.EC_II;
           content = content + warningList[i].properties.ONSET;
@@ -99,8 +99,18 @@ class warnlocationDevice extends Device {
         return;
       }
       let warningList = json.features;
-      await warningList.sort((a, b) => a.properties.ONSET < b.properties.ONSET);
-      
+      //warningList.sort((a, b) => a.properties.ONSET < b.properties.ONSET);
+      warningList.sort((a, b) => {
+        if (a.properties.ONSET < b.properties.ONSET) {
+          return -1;
+        }
+        if (a.properties.ONSET > b.properties.ONSET) {
+          return 1;
+        }
+        // Else: equal
+        return 0;      
+      });
+
       let hash = await this.getWarningsHash(warningList);
 
       //if ( await this.getCapabilityValue("last_warnings") != JSON.stringify(warningList) ){
