@@ -1,2 +1,4 @@
-# Private config
-build
+env.json
+node_modules/
+build/
+images/
