@@ -108,6 +108,26 @@ class warnlocationDevice extends Device {
           return 1;
         }
         // Else: equal
+        if (a.properties.ONSET == b.properties.ONSET) {
+          if (a.properties.EXPIRES < b.properties.EXPIRES) {
+            return -1;
+          }
+          if (a.properties.EXPIRES > b.properties.EXPIRES) {
+            return 1;
+          }
+          // Esle: equal
+          if (a.properties.EXPIRES == b.properties.EXPIRES) {
+            if (a.properties.EC_II < b.properties.EC_II) {
+              return -1;
+            }
+            if (a.properties.EC_II > b.properties.EC_II) {
+              return 1;
+            }
+            // Else: All values are identical (begin, end, ecii)
+            return 0;
+          }
+        }
+        // Default return value
         return 0;      
       });
 

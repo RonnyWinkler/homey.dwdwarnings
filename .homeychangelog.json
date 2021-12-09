@@ -82,5 +82,9 @@
   "1.0.6": {
     "en": "Prevention of duplicate warnings caused by wrong sorting.",
     "de": "Verhinderung doppelter Warnungen aufgrund falscher Sortierung."
+  },
+  "1.0.7": {
+    "en": "Sorting supplemented by additional fields.",
+    "de": "Sortierung um weitere Felder ergänzt."
   }
 }
