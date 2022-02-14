@@ -86,5 +86,9 @@
   "1.0.7": {
     "en": "Sorting supplemented by additional fields.",
     "de": "Sortierung um weitere Felder ergänzt."
+  },
+  "1.0.8": {
+    "en": "Search without case sensitivity.",
+    "de": "Suche ohne Berücksichtigung der Groß-/Kleinschreibung."
   }
 }

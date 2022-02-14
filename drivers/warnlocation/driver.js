@@ -38,7 +38,7 @@ class warnlocationDriver extends Driver {
     }
     else{
       this.warncellname = name;
-      let filteredDevices = wanrcellids.filter(x => (x.name.indexOf(name) != -1));    
+      let filteredDevices = wanrcellids.filter(x => (x.name.toLowerCase().indexOf(name.toLowerCase()) != -1));
       this.log("Found: "+filteredDevices.length);
       return filteredDevices.length;
     }
@@ -55,7 +55,7 @@ class warnlocationDriver extends Driver {
     {
       return [];
     }
-    let filteredDevices = wanrcellids.filter(x => ( x.name.indexOf(this.warncellname) != -1 ) );
+    let filteredDevices = wanrcellids.filter(x => ( x.name.toLowerCase().indexOf(this.warncellname.toLowerCase()) != -1 ) );
     this.log("Found: "+filteredDevices.length);
     return filteredDevices;
   }
