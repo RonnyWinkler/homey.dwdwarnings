@@ -1,7 +1,7 @@
 {
     "type": "string",
     "title": {
-        "en": "Warning 3 - period",
+        "en": "Warning 3 - Period",
         "de": "Warnung 3 - Zeitraum"
     },
     "getable": true,

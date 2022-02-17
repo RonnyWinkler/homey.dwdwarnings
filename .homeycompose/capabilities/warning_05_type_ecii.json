@@ -1,8 +1,8 @@
 {
     "type": "number",
     "title": {
-        "en": "EC II type",
-        "de": "EC II Typ"
+        "en": "Warning 5 - EC II type",
+        "de": "Warnung 5 - EC II Typ"
     },
     "getable": true,
     "setable": false,

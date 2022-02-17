@@ -1,8 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "Group",
-        "de": "Gruppe"
+        "en": "Warning 1 - Group",
+        "de": "Warnung 1 - Gruppe"
     },
     "getable": true,
     "setable": false,

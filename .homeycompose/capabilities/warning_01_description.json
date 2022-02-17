@@ -1,7 +1,7 @@
 {
     "type": "string",
     "title": {
-        "en": "Warning 1 - description",
+        "en": "Warning 1 - Description",
         "de": "Warnung 1 - Beschreibung"
     },
     "getable": true,

@@ -1,8 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "Warning 3 - description",
-        "de": "Warnung 3 - Beschreibung"
+        "en": "Warning 4 - Description",
+        "de": "Warnung 4 - Beschreibung"
     },
     "getable": true,
     "setable": false,

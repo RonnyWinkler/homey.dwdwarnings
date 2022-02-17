@@ -1,8 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "Severity",
-        "de": "Schweregrad"
+        "en": "Warning 2 - Severity",
+        "de": "Warnung 2 - Schweregrad"
     },
     "getable": true,
     "setable": false,

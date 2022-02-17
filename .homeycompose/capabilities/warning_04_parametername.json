@@ -1,8 +1,8 @@
 {
     "type": "string",
     "title": {
-        "en": "Parameter name",
-        "de": "Parametername"
+        "en": "Warning 4 - Parameter name",
+        "de": "Warnung 4 - Parametername"
     },
     "getable": true,
     "setable": false,

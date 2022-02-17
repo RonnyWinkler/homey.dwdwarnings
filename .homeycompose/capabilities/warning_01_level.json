@@ -1,7 +1,7 @@
 {
     "type": "number",
     "title": {
-        "en": "Warning 1 - level",
+        "en": "Warning 1 - Level",
         "de": "Warnung 1 - Stufe"
     },
     "getable": true,
