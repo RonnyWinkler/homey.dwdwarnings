@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Severity",
+        "de": "Schweregrad"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": null,
+    "insights": true,
+    "icon": "/assets/measure_number_of_warnings.svg"
+}

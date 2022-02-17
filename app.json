@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "de.ronnywinkler.homey.dwdwarnings",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -334,7 +334,27 @@
         "warning_03_severity",
         "warning_03_type_ecii",
         "warning_03_parametername",
-        "warning_03_parametervalue"
+        "warning_03_parametervalue",
+        "warning_04_type",
+        "warning_04_level",
+        "warning_04_period",
+        "warning_04_description",
+        "warning_04_msgtype",
+        "warning_04_group",
+        "warning_04_severity",
+        "warning_04_type_ecii",
+        "warning_04_parametername",
+        "warning_04_parametervalue",
+        "warning_05_type",
+        "warning_05_level",
+        "warning_05_period",
+        "warning_05_description",
+        "warning_05_msgtype",
+        "warning_05_group",
+        "warning_05_severity",
+        "warning_05_type_ecii",
+        "warning_05_parametername",
+        "warning_05_parametervalue"
       ],
       "defaultCapabilities": [
         "measure_number_of_warnings"
@@ -812,6 +832,246 @@
       "icon": "/assets/measure_number_of_warnings.svg"
     },
     "warning_03_type_ecii": {
+      "type": "number",
+      "title": {
+        "en": "EC II type",
+        "de": "EC II Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_description": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - description",
+        "de": "Warnung 3 - Beschreibung"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_group": {
+      "type": "string",
+      "title": {
+        "en": "Group",
+        "de": "Gruppe"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_level": {
+      "type": "number",
+      "title": {
+        "en": "Warning 3 - level",
+        "de": "Warnung 3 - Stufe"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_msgtype": {
+      "type": "string",
+      "title": {
+        "en": "Type",
+        "de": "Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_parametername": {
+      "type": "string",
+      "title": {
+        "en": "Parameter name",
+        "de": "Parametername"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_parametervalue": {
+      "type": "string",
+      "title": {
+        "en": "Parameter value",
+        "de": "Parameterwert"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_period": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - period",
+        "de": "Warnung 3 - Zeitraum"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_severity": {
+      "type": "string",
+      "title": {
+        "en": "Severity",
+        "de": "Schweregrad"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_type": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - type",
+        "de": "Warnung 3 - Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_04_type_ecii": {
+      "type": "number",
+      "title": {
+        "en": "EC II type",
+        "de": "EC II Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_description": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - description",
+        "de": "Warnung 3 - Beschreibung"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_group": {
+      "type": "string",
+      "title": {
+        "en": "Group",
+        "de": "Gruppe"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_level": {
+      "type": "number",
+      "title": {
+        "en": "Warning 3 - level",
+        "de": "Warnung 3 - Stufe"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_msgtype": {
+      "type": "string",
+      "title": {
+        "en": "Type",
+        "de": "Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_parametername": {
+      "type": "string",
+      "title": {
+        "en": "Parameter name",
+        "de": "Parametername"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_parametervalue": {
+      "type": "string",
+      "title": {
+        "en": "Parameter value",
+        "de": "Parameterwert"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_period": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - period",
+        "de": "Warnung 3 - Zeitraum"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_severity": {
+      "type": "string",
+      "title": {
+        "en": "Severity",
+        "de": "Schweregrad"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": true,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_type": {
+      "type": "string",
+      "title": {
+        "en": "Warning 3 - type",
+        "de": "Warnung 3 - Typ"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": null,
+      "insights": false,
+      "icon": "/assets/measure_number_of_warnings.svg"
+    },
+    "warning_05_type_ecii": {
       "type": "number",
       "title": {
         "en": "EC II type",

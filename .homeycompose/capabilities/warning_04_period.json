@@ -1,0 +1,12 @@
+{
+    "type": "string",
+    "title": {
+        "en": "Warning 3 - period",
+        "de": "Warnung 3 - Zeitraum"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": null,
+    "insights": false,
+    "icon": "/assets/measure_number_of_warnings.svg"
+}

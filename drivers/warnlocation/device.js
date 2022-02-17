@@ -32,6 +32,68 @@ class warnlocationDevice extends Device {
 
     async updateCapabilities(){
         // Add new capabilities (if not already added)
+
+        // New capabilities with version 1.0.9
+        if (!this.hasCapability('warning_04_type')){
+          this.addCapability('warning_04_type');
+        }
+        if (!this.hasCapability('warning_04_level')){
+          this.addCapability('warning_04_level');
+        }
+        if (!this.hasCapability('warning_04_period')){
+          this.addCapability('warning_04_period');
+        }
+        if (!this.hasCapability('warning_04_description')){
+          this.addCapability('warning_04_description');
+        }
+        if (!this.hasCapability('warning_04_msgtype')){
+          this.addCapability('warning_04_msgtype');
+        }
+        if (!this.hasCapability('warning_04_group')){
+          this.addCapability('warning_04_group');
+        }
+        if (!this.hasCapability('warning_04_severity')){
+          this.addCapability('warning_04_severity');
+        }
+        if (!this.hasCapability('warning_04_type_ecii')){
+          this.addCapability('warning_04_type_ecii');
+        }
+        if (!this.hasCapability('warning_04_parametername')){
+          this.addCapability('warning_04_parametername');
+        }
+        if (!this.hasCapability('warning_04_parametervalue')){
+          this.addCapability('warning_04_parametervalue');
+        }
+        if (!this.hasCapability('warning_05_type')){
+          this.addCapability('warning_05_type');
+        }
+        if (!this.hasCapability('warning_05_level')){
+          this.addCapability('warning_05_level');
+        }
+        if (!this.hasCapability('warning_05_period')){
+          this.addCapability('warning_05_period');
+        }
+        if (!this.hasCapability('warning_05_description')){
+          this.addCapability('warning_05_description');
+        }
+        if (!this.hasCapability('warning_05_msgtype')){
+          this.addCapability('warning_05_msgtype');
+        }
+        if (!this.hasCapability('warning_05_group')){
+          this.addCapability('warning_05_group');
+        }
+        if (!this.hasCapability('warning_05_severity')){
+          this.addCapability('warning_05_severity');
+        }
+        if (!this.hasCapability('warning_05_type_ecii')){
+          this.addCapability('warning_05_type_ecii');
+        }
+        if (!this.hasCapability('warning_05_parametername')){
+          this.addCapability('warning_05_parametername');
+        }
+        if (!this.hasCapability('warning_05_parametervalue')){
+          this.addCapability('warning_05_parametervalue');
+        }
     }
 
     async registerImage(){
@@ -299,7 +361,7 @@ class warnlocationDevice extends Device {
      * This ID is converted into 01 .. 03 for capability name
      */
      async setWarningCapability(id = 0, warning){
-      if (id < 0 || id > 2){
+      if (id < 0 || id > 4){
         return;
       }
       id = id + 1;

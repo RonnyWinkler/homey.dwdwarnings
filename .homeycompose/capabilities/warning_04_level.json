@@ -1,0 +1,12 @@
+{
+    "type": "number",
+    "title": {
+        "en": "Warning 3 - level",
+        "de": "Warnung 3 - Stufe"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": null,
+    "insights": false,
+    "icon": "/assets/measure_number_of_warnings.svg"
+}

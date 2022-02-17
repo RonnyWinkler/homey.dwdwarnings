@@ -42,7 +42,27 @@
     "warning_03_severity",
     "warning_03_type_ecii",
     "warning_03_parametername",
-    "warning_03_parametervalue"
+    "warning_03_parametervalue",
+    "warning_04_type",
+    "warning_04_level",
+    "warning_04_period",
+    "warning_04_description",
+    "warning_04_msgtype",
+    "warning_04_group",
+    "warning_04_severity",
+    "warning_04_type_ecii",
+    "warning_04_parametername",
+    "warning_04_parametervalue",
+    "warning_05_type",
+    "warning_05_level",
+    "warning_05_period",
+    "warning_05_description",
+    "warning_05_msgtype",
+    "warning_05_group",
+    "warning_05_severity",
+    "warning_05_type_ecii",
+    "warning_05_parametername",
+    "warning_05_parametervalue"
   ],
   "defaultCapabilities": [
     "measure_number_of_warnings"

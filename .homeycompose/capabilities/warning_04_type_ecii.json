@@ -1,0 +1,12 @@
+{
+    "type": "number",
+    "title": {
+        "en": "EC II type",
+        "de": "EC II Typ"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": null,
+    "insights": true,
+    "icon": "/assets/measure_number_of_warnings.svg"
+}

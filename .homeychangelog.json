@@ -90,5 +90,9 @@
   "1.0.8": {
     "en": "Search without case sensitivity.",
     "de": "Suche ohne Berücksichtigung der Groß-/Kleinschreibung."
+  },
+  "1.0.9": {
+    "en": "Added capabilities for warning message 4 and 5.",
+    "de": "Geräteattribute für Warnung 4 und 5 ergänzt."
   }
 }
