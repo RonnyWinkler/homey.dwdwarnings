@@ -220,6 +220,8 @@ class warnlocationDevice extends Device {
             this.clearWarningCapability(0);
             this.clearWarningCapability(1);
             this.clearWarningCapability(2);
+            this.clearWarningCapability(3);
+            this.clearWarningCapability(4);
           }
           catch (error){
             this.log("Error setting capabilities: " + error.message);
@@ -273,6 +275,12 @@ class warnlocationDevice extends Device {
             if (warningList.length < 3){
               this.clearWarningCapability(2);
             }
+            if (warningList.length < 4){
+              this.clearWarningCapability(3);
+            }
+            if (warningList.length < 5){
+              this.clearWarningCapability(4);
+            }
             // set complete warning text into capability
             // this.log("setCapabilityValue: measure_warnings:" + capabilityMessage);
             this.setCapabilityValue("measure_warnings", capabilityMessage);
@@ -293,6 +301,22 @@ class warnlocationDevice extends Device {
       else
       {
         this.log("No new warnings found for device");
+        // clear unused warning capabilities
+        if (warningList.length < 1){
+          this.clearWarningCapability(0);
+        }
+        if (warningList.length < 2){
+          this.clearWarningCapability(1);
+        }
+        if (warningList.length < 3){
+          this.clearWarningCapability(2);
+        }
+        if (warningList.length < 4){
+          this.clearWarningCapability(3);
+        }
+        if (warningList.length < 5){
+          this.clearWarningCapability(4);
+        }
       }
     }
 
@@ -329,7 +353,7 @@ class warnlocationDevice extends Device {
      * This ID is converted into 01 .. 03 for capability name
      */
     async clearWarningCapability(id = 0){
-      if (id < 0 || id > 2){
+      if (id < 0 || id > 4){
         return;
       }
       id = id + 1;
