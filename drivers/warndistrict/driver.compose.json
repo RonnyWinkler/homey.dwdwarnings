@@ -65,7 +65,7 @@
     }
   ],
   "images": {
-    "small": "/drivers/warndistrict/assets/images/small.jpg",
-    "large": "/drivers/warndistrict/assets/images/large.jpg"
+    "small": "/drivers/warndistrict/assets/images/small.png",
+    "large": "/drivers/warndistrict/assets/images/large.png"
   }
 }
