@@ -114,5 +114,9 @@
   "1.0.14": {
     "en": "Updated device images.",
     "de": "Geräte-Bilder aktualisiert."
+  },
+  "1.0.15": {
+    "en": "Adaptet date convertion to FW 7.4.x",
+    "de": "Datums-Konvertierung angepasst an FW 7.4.0."
   }
 }
