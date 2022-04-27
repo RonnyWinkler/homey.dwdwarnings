@@ -209,7 +209,7 @@ class warnlocationDevice extends Device {
             this.setCapabilityValue("measure_number_of_warnings", 0);
             // Old warnings existing? Create timeline message about cancel of warnings
             let messageCapability = this.homey.__("warning.cancelled") +' **'+ this.getName() + '**';
-            this.homey.notifications.createNotification({excerpt: messageCapability });
+            this.homey.notifications.createNotification({excerpt: messageCapability }).catch(error => {this.error('Error sending notification: '+error.message)});
             // set complete warning text into capability
             messageCapability = this.homey.__("warning.cancelled") +' '+ this.getName();
             // this.log("setCapabilityValue: measure_warnings:" + capabilityMessage);
@@ -255,7 +255,7 @@ class warnlocationDevice extends Device {
               let message = await this.composeMessage(warningList[i], true);
               // this.log("Message");
               // this.log(message);
-              this.homey.notifications.createNotification({excerpt: message});
+              this.homey.notifications.createNotification({excerpt: message}).catch(error => {this.error('Error sending notification: '+error.message)});
               // concatenate messages for capability (without bold text)
               let messageCapability = await this.composeMessage(warningList[i], false);
               if (capabilityMessage == ''){

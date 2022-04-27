@@ -118,5 +118,9 @@
   "1.0.15": {
     "en": "Adaptet date convertion to FW 7.4.x",
     "de": "Datums-Konvertierung angepasst an FW 7.4.0."
+  },
+  "1.0.16": {
+    "en": "Added exception handling for FW 7.4.x",
+    "de": "Fehlerbeandlung für FW 7.4.x ergänzt"
   }
 }
