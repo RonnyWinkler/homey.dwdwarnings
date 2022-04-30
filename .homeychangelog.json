@@ -122,5 +122,9 @@
   "1.0.16": {
     "en": "Added exception handling for FW 7.4.x",
     "de": "Fehlerbeandlung für FW 7.4.x ergänzt"
+  },
+  "1.0.17": {
+    "en": "Added exception handling for FW 7.4.x",
+    "de": "Fehlerbeandlung für FW 7.4.x ergänzt"
   }
 }

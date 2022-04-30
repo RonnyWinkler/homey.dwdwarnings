@@ -220,19 +220,25 @@ class dwdWarnApp extends Homey.App {
     if( (jsonString) && (jsonString != this.lastDWDresponse) ){
       this.log("New warnings!");
       this.lastDWDresponse = jsonString;
-      let json = JSON.parse(jsonString).warnings;
-      // this.log("JSON: ");
-      // this.log(json);
+      try{
+        // catch JSON convert errors
+        let json = JSON.parse(jsonString).warnings;
+        // this.log("JSON: ");
+        // this.log(json);
 
-      var array = [];
-      for(var i in json)
-        array.push([i, json [i]]);
-      // this.log("Array:");
-      // this.log(array);
+        var array = [];
+        for(var i in json)
+          array.push([i, json [i]]);
+        // this.log("Array:");
+        // this.log(array);
 
-      // Emit new warnings list to devices. 
-      // Devices will filter the list and read the warnings into capabilities.
-      this.events.emit("deviceUpdateWarndistrict", array);
+        // Emit new warnings list to devices. 
+        // Devices will filter the list and read the warnings into capabilities.
+        this.events.emit("deviceUpdateWarndistrict", array);
+      }
+      catch(error){
+        this.log("parseDWDresponse() Error JSON convert: "+error.message+" JSON: "+jsonString);
+      }
     }
     else{
       this.log("No new warnings.");
