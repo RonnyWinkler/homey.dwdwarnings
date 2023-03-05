@@ -13,7 +13,7 @@
         "title_warncellname_location": "Name der Gemeinde, Stadt oder des Landkreises",
         "subtitle_warncellname1_district": "Bitte geben Sie denn Name des Landkreises oder der kreisfreien Stadt an.",
         "subtitle_warncellname1_location": "Bitte geben Sie denn Name der Gemeinde, der Stadt, des Landkreises oder des Gebiets an.",
-        "subtitle_warncellname2": "Bitte mindestens 3 Zeichen eingeben.",
+        "subtitle_warncellname2": "Bitte mindestens 2 Zeichen eingeben.",
         "label_warncellname": "Name:",
         "label_found": "Gefundene Einträge:"
     },

@@ -23,6 +23,10 @@ class warndistrictDriver extends Driver {
     session.setHandler("warncellname", async (name) => {
       return await this.onInputWarncellname(name);
     });
+
+    session.setHandler("warncellnameGetList", async (name) => {
+      return await this.onInputWarncellnameGetList(name);
+    });
   }
 
   /**
@@ -32,9 +36,9 @@ class warndistrictDriver extends Driver {
    */
   async onInputWarncellname(name){
     this.log("Event warncellname, Name: "+name);
-    if (name.length < 3){
+    if (name == null){
       this.warncellname = '';
-      return '---';
+      return 0;
     }
     else{
       this.warncellname = name;
@@ -43,6 +47,21 @@ class warndistrictDriver extends Driver {
       return filteredDevices.length;
     }
   }
+
+  async onInputWarncellnameGetList(name){
+    this.log("Event warncellnameGetList, Name: "+name);
+    if (name == null){
+      this.warncellname = '';
+      return [];
+    }
+    else{
+      this.warncellname = name;
+      let filteredDevices = wanrcellids.filter(x => (x.name.toLowerCase().indexOf(name.toLowerCase()) != -1));
+      this.log("Found: "+filteredDevices.length);
+      return filteredDevices;
+    }
+  }
+
 
   /**
    * onPairListDevices is called when a user is adding a device and the 'list_devices' view is called.

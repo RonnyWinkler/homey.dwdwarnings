@@ -1,28 +1,66 @@
+<link rel="stylesheet" type="text/css" href="../../../assets/css/autoComplete.css"/>
+
 <script type="application/javascript">
 
     Homey.setTitle(Homey.__("pair.title_warncellname_location"));
-    Homey.emit("warncellname", value).then(function (result) {
-                document.getElementById('found_nr').value = result; 
+    Homey.emit("warncellname", document.getElementById('input_warncellname').value).then(function (result) {
+                document.getElementById('input_found_nr').value = result; 
             });
+</script>
 
-    function warncellnameChanged(value){
-        Homey.emit("warncellname", value).then(function (result) {
-            document.getElementById('found_nr').value = result; 
-        });
-    }
-  </script>
-
-<div id="warncellname" class="tabcontent">
+<div id="div_warncellname">
     <p data-i18n="pair.subtitle_warncellname1_location"></p>
-    <p data-i18n="pair.subtitle_warncellname2"></p>
-        <fieldset>
-            <div class="field row">
-                <label for="warncellname"><span data-i18n="pair.label_warncellname"></span></label>
-                <input id="warncellname" type="text" value="" oninput="warncellnameChanged(this.value)"/>
+    <!-- <p data-i18n="pair.subtitle_warncellname2"></p> -->
+        <fieldset class="homey-form-fieldset">
+            <div class="field row" class="homey-form-group">
+                <label for="label_warncellname" class="homey-form-label"><span data-i18n="pair.label_warncellname"></span></label>
+                <input id="input_warncellname"  class="homey-form-input" type="text"/>
             </div>
-            <div class="field row">
-                <label id="found_txt"><span data-i18n="pair.label_found"></span></label>
-                <input id="found_nr" type="text" value="---" disabled="true"/>
+            <div class="field row" class="homey-form-group">
+                <label id="label_ound_txt" class="homey-form-label"><span data-i18n="pair.label_found"></span></label>
+                <input id="input_found_nr"  class="homey-form-input" type="text" value="0" disabled="true"/>
             </div>
         </fieldset>
 </div>
+
+<script src="../../../assets/js/autoComplete.min.js"></script>
+
+<script>
+    (function () {
+        let autoCompleteJS = new autoComplete({
+            selector: "#input_warncellname",
+            // placeHolder: "",
+            debounce: 300,
+            threshold: 2,
+            data: {
+                src : (query) => {
+                    return Homey.emit("warncellnameGetList", query).then(function (result) {
+                        document.getElementById('input_found_nr').value = result.length;
+                        return result;
+                    });
+                },
+                keys: ["name"]
+            },
+            resultsList:{
+                maxResults: 100,
+                noResults: true
+            },
+            resultItem: {
+                highlight: true
+            },
+            events: {
+                input: {
+                    selection: (event) => {
+                        autoCompleteJS.input.value = event.detail.selection.value.name;
+                        Homey.emit("warncellname", event.detail.selection.value.name).then(function (result) {
+                            document.getElementById('input_found_nr').value = result; 
+                        });
+                    }
+                }
+            },
+            trigger: (query) => {
+                return true; // Search also for empty field
+            },
+        });
+    })();
+</script>

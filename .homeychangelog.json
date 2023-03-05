@@ -126,5 +126,9 @@
   "1.0.17": {
     "en": "Added exception handling for FW 7.4.x",
     "de": "Fehlerbeandlung für FW 7.4.x ergänzt"
+  },
+  "1.1.0": {
+    "en": "Improved pair view: added autocomplete selection for warn locations.",
+    "de": "Pairing-Dialog verbessert: Autocomplete-Suche für Warngebiet ergänzt."
   }
 }

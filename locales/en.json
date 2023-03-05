@@ -13,7 +13,7 @@
         "title_warncellname_location": "Name of the local authority, city, district.",
         "subtitle_warncellname1_district": "Please enter the name of the city or the district.",
         "subtitle_warncellname1_location": "Please enter the name of the city local authority, city, district or area.",
-        "subtitle_warncellname2": "Please enter at least 3 characters.",
+        "subtitle_warncellname2": "Please enter at least 2 characters.",
         "label_warncellname": "Name:",
         "label_found": "Found entries:"
     },

@@ -1,7 +1,7 @@
 {
   "id": "de.ronnywinkler.homey.dwdwarnings",
-  "version": "1.0.17",
-  "compatibility": ">=5.0.0",
+  "version": "1.1.0",
+  "compatibility": ">=8.1.0",
   "sdk": 3,
   "name": {
     "en": "DWD weather warnings",
