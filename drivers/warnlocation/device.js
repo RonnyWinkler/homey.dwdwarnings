@@ -109,11 +109,16 @@ class warnlocationDevice extends Device {
     }
 
     async getImageURL(){
-      let state = this.getData().id.toString().substring(1, 3);
-      //this.log("State: "+state);
-      let url = state_url.filter(x => (x.state == state))[0].url;
-      //this.log("URL: "+url);
-      return url;
+      try{
+        let state = this.getData().id.toString().substring(1, 3);
+        //this.log("State: "+state);
+          let url = state_url.filter(x => (x.state == state))[0].url;
+        //this.log("URL: "+url);
+        return url;
+      }
+      catch(error){
+        return null;
+      }
     } 
 
     async onDeviceUpdate(data){
