@@ -134,5 +134,9 @@
   "1.1.1": {
     "en": "Check invalid region on warnimage reading.",
     "de": "Prüfung auf ungültige Regionen beim Lesen der Warn-Karte."
+  },
+  "1.2.0": {
+    "en": "Updated new warncell list.",
+    "de": "Warncell-Liste aktualisiert."
   }
 }
